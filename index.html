@@ -1,5 +1,4 @@
-
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>shri balaji stone</title>
@@ -48,19 +47,12 @@
       padding: 10px 20px;
       background: #a67c52;
       color: white;
-      text-decoration: none;
       border-radius: 5px;
-      transition: 0.3s;
     }
 
-    .btn:hover {
-      background: #8b5e34;
-    }
-
-    footer {
-      margin-top: 30px;
-      padding: 15px;
-      background: #d2b48c;
+    /* 🔒 Hide main site before login */
+    #mainSite {
+      display: none;
     }
   </style>
 </head>
@@ -71,74 +63,75 @@
   🏺 shri balaji stone
 </header>
 
-<div class="container">
-
-  <h2>✨ Handcrafted Products</h2>
-
-  <div class="product">
-    <h3>Sandstone Murti</h3>
-    <img src="Screenshot_2026_0325_105345.jpg" width="300">
-    <p>Price: ₹1,50,000.00</p>
-    <a class="btn" href="https://wa.me/919166354672?text=I want to buy Sandstone Murti">Buy on WhatsApp</a>
-  </div>
-
-  <div class="product">
-    <h3>Temple Decor Item</h3>
-    <img src="21-feet-sandstone-temple-500x500.jpg" width="300">
-    <p>Price: ₹3,00,000.00</p>
-    <a class="btn" href="https://wa.me/919166354672?text=I want to buy Temple Decor Item">Buy on WhatsApp</a>
-  </div>
-
-</div>
-
-<div class="container">
-  <h2>📞 Contact</h2>
-  <p>WhatsApp: +919166354672</p>
-</div>
-<!-- LOGIN -->
-<div id="loginPage" class="login-box">
+<!-- 🔐 LOGIN PAGE -->
+<div id="loginPage">
   <h2>Login / Signup</h2>
 
-  <input type="email" id="email" placeholder="Email"><br>
-  <input type="password" id="password" placeholder="Password"><br>
+  <input type="email" id="email" placeholder="Email"><br><br>
+  <input type="password" id="password" placeholder="Password"><br><br>
 
   <button class="btn" onclick="signup()">Sign Up</button>
   <button class="btn" onclick="login()">Login</button>
-
-  <!-- ✅ NEW BUTTON -->
+  <br><br>
   <button class="btn" onclick="skipLogin()">Skip Login</button>
+</div>
+
+<!-- 🏠 MAIN WEBSITE -->
+<div id="mainSite">
+
+  <div class="container">
+    <h2>✨ Handcrafted Products</h2>
+
+    <div class="product">
+      <h3>Sandstone Murti</h3>
+      <img src="Screenshot_2026_0325_105345.jpg">
+      <p>Price: ₹1,50,000</p>
+      <a class="btn" href="https://wa.me/919166354672?text=I want to buy Sandstone Murti">Buy</a>
+    </div>
+
+    <div class="product">
+      <h3>Temple Decor Item</h3>
+      <img src="21-feet-sandstone-temple-500x500.jpg">
+      <p>Price: ₹3,00,000</p>
+      <a class="btn" href="https://wa.me/919166354672?text=I want to buy Temple Decor Item">Buy</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>📞 Contact</h2>
+    <p>WhatsApp: +919166354672</p>
+  </div>
+
+</div>
+
+<!-- 🔥 FIREBASE SCRIPT -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
-// ✅ Your Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyAVA0qolBB18eg0QuS2ZH4K-iZ5FyeDY4s",
   authDomain: "shri-balaji-stonee.firebaseapp.com",
   projectId: "shri-balaji-stonee",
   storageBucket: "shri-balaji-stonee.firebasestorage.app",
   messagingSenderId: "930310986407",
-  appId: "1:930310986407:web:8bb6d5b194d4dabea61982",
-  measurementId: "G-R72V129SPZ"
+  appId: "1:930310986407:web:8bb6d5b194d4dabea61982"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// 🔐 SIGNUP
+// SIGNUP
 window.signup = function () {
   let email = document.getElementById("email").value;
   let pass = document.getElementById("password").value;
 
   createUserWithEmailAndPassword(auth, email, pass)
-    .then(() => {
-      alert("Signup Success ✅");
-    })
+    .then(() => alert("Signup Success ✅"))
     .catch(err => alert(err.message));
 }
 
-// 🔐 LOGIN
+// LOGIN
 window.login = function () {
   let email = document.getElementById("email").value;
   let pass = document.getElementById("password").value;
@@ -152,36 +145,15 @@ window.login = function () {
     .catch(err => alert(err.message));
 }
 
-// 🔓 SKIP LOGIN
+// SKIP LOGIN
 window.skipLogin = function () {
   document.getElementById("loginPage").style.display = "none";
   document.getElementById("mainSite").style.display = "block";
 }
 </script>
 
-const auth = getAuth(app);
-
-window.signup = function () {
-  let email = document.getElementById("email").value;
-  let pass = document.getElementById("password").value;
-
-  createUserWithEmailAndPassword(auth, email, pass)
-    .then(() => alert("Signup Success"))
-    .catch(err => alert(err.message));
-}
-
-window.login = function () {
-  let email = document.getElementById("email").value;
-  let pass = document.getElementById("password").value;
-
-  signInWithEmailAndPassword(auth, email, pass)
-    .then(() => showSite())
-    .catch(err => alert(err.message));
-}
-</script>
-</div>
 <footer>
-  © 2026 shri balaji stone | Crafted with Tradition
+  © 2026 shri balaji stone
 </footer>
 
 </body>
