@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shri Balaji Stone</title>
+  <title>Shri Balaji Stone | Premium Sandstone & Murti</title>
 
   <style>
     body {
@@ -11,15 +11,20 @@
       font-family: Georgia, serif;
       background: #f3f1ed;
       color: #2f2b26;
+      scroll-behavior: smooth;
     }
 
     /* =========================
        TOP SMALL NAV
     ========================== */
     .top-nav {
-      background: #f9f9f9;
+      background: rgba(255,255,255,0.95);
       border-bottom: 1px solid #ddd;
       padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(10px);
     }
 
     .top-nav ul {
@@ -37,8 +42,9 @@
 
     .top-nav ul li a {
       text-decoration: none;
-      color: #555;
+      color: #444;
       transition: 0.3s;
+      font-weight: bold;
     }
 
     .top-nav ul li a:hover {
@@ -50,7 +56,7 @@
     ========================== */
     .hero {
       position: relative;
-      height: 470px;
+      height: 520px;
       overflow: hidden;
     }
 
@@ -60,7 +66,8 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 1.2s ease-in-out;
+      transform: scale(1.05);
     }
 
     .hero-slide.active {
@@ -71,45 +78,113 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.40);
+      background: rgba(0,0,0,0.55);
       z-index: 1;
     }
 
     .brand {
       position: absolute;
-      top: 25px;
-      left: 25px;
+      top: 22px;
+      left: 22px;
       z-index: 5;
       color: white;
       font-size: 30px;
       font-weight: bold;
       letter-spacing: 2px;
-      text-shadow: 0px 4px 10px rgba(0,0,0,0.7);
+      text-shadow: 0px 4px 12px rgba(0,0,0,0.8);
+    }
+
+    .hero-text {
+      position: absolute;
+      z-index: 5;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      width: 92%;
+      max-width: 850px;
+    }
+
+    .hero-text h1 {
+      font-size: 45px;
+      margin: 0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero-text p {
+      margin-top: 12px;
+      font-size: 16px;
+      opacity: 0.9;
+      line-height: 1.7;
+    }
+
+    .hero-btns {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btns a {
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      letter-spacing: 0.8px;
+      transition: 0.3s;
+    }
+
+    .hero-btns .btn-main {
+      background: #b8860b;
+      color: white;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.35);
+    }
+
+    .hero-btns .btn-main:hover {
+      background: #8b6508;
+      transform: translateY(-2px);
+    }
+
+    .hero-btns .btn-dark {
+      background: rgba(255,255,255,0.18);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.35);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-btns .btn-dark:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
     }
 
     /* Center menu box */
     .menu-box {
       position: absolute;
-      top: 52%;
+      top: 18%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 5;
       background: rgba(255,255,255,0.92);
-      padding: 20px 30px;
-      border-radius: 4px;
+      padding: 16px 28px;
+      border-radius: 12px;
       display: flex;
-      gap: 30px;
+      gap: 22px;
       box-shadow: 0px 10px 25px rgba(0,0,0,0.45);
       text-transform: uppercase;
       font-size: 13px;
       letter-spacing: 1px;
       flex-wrap: wrap;
       justify-content: center;
+      border: 1px solid rgba(255,255,255,0.6);
     }
 
     .menu-box a {
       text-decoration: none;
-      color: #333;
+      color: #222;
       font-weight: bold;
       transition: 0.3s;
     }
@@ -158,22 +233,22 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 20px;
-      margin-top: -80px;
+      margin-top: -95px;
       position: relative;
       z-index: 10;
     }
 
     .cat-card {
       background: white;
-      border-radius: 4px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0px 7px 18px rgba(0,0,0,0.18);
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.18);
       transition: 0.3s;
       border: 1px solid #e1e1e1;
     }
 
     .cat-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
     }
 
     .cat-card img {
@@ -184,7 +259,7 @@
 
     .cat-card h3 {
       margin: 15px;
-      font-size: 16px;
+      font-size: 15px;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: #222;
@@ -197,19 +272,19 @@
     .cat-card p {
       margin: 0 15px 15px;
       font-size: 13px;
-      line-height: 1.6;
+      line-height: 1.7;
       color: #555;
     }
 
     .cat-card a {
       display: inline-block;
       margin: 0 15px 20px;
-      padding: 8px 15px;
+      padding: 9px 15px;
       background: #b8860b;
       color: white;
       font-size: 13px;
       text-decoration: none;
-      border-radius: 4px;
+      border-radius: 10px;
       transition: 0.3s;
     }
 
@@ -230,8 +305,8 @@
       margin: auto;
       background: rgba(255,255,255,0.95);
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0px 8px 25px rgba(0,0,0,0.2);
+      border-radius: 18px;
+      box-shadow: 0px 12px 35px rgba(0,0,0,0.2);
       border: 1px solid #ddd;
     }
 
@@ -250,7 +325,7 @@
 
     #loginPage input {
       padding: 12px;
-      border-radius: 8px;
+      border-radius: 10px;
       border: 1px solid #cfcfcf;
       width: 90%;
       max-width: 320px;
@@ -267,10 +342,10 @@
     .btn {
       display: inline-block;
       margin-top: 15px;
-      padding: 11px 20px;
+      padding: 12px 20px;
       background: #b8860b;
       color: white;
-      border-radius: 7px;
+      border-radius: 12px;
       text-decoration: none;
       font-size: 15px;
       cursor: pointer;
@@ -282,14 +357,15 @@
 
     .btn:hover {
       background: #8b6508;
+      transform: translateY(-2px);
     }
 
     .btn2 {
-      background: #333;
+      background: #222;
     }
 
     .btn2:hover {
-      background: #111;
+      background: #000;
     }
 
     /* =========================
@@ -297,12 +373,13 @@
     ========================== */
     .logout-btn {
       position: fixed;
-      top: 85px;
+      top: 75px;
       right: 15px;
       z-index: 99;
       padding: 10px 14px;
       font-size: 13px;
       display: none;
+      border-radius: 12px;
     }
 
     /* =========================
@@ -316,18 +393,20 @@
        SECTION TITLE
     ========================== */
     .section-title {
-      margin-top: 60px;
-      font-size: 30px;
+      margin-top: 70px;
+      font-size: 32px;
       letter-spacing: 1px;
       text-align: center;
       color: #222;
+      text-transform: uppercase;
     }
 
     .section-subtitle {
       text-align: center;
-      margin-top: -10px;
+      margin-top: -8px;
       font-size: 14px;
       color: #666;
+      line-height: 1.7;
     }
 
     /* =========================
@@ -344,14 +423,14 @@
       align-items: center;
       background: rgba(255,255,255,0.9);
       padding: 18px;
-      border-radius: 10px;
+      border-radius: 16px;
       box-shadow: 0px 6px 20px rgba(0,0,0,0.12);
       border: 1px solid #e5e5e5;
     }
 
     .controls input, .controls select {
       padding: 12px;
-      border-radius: 8px;
+      border-radius: 12px;
       border: 1px solid #cfcfcf;
       font-size: 15px;
       outline: none;
@@ -377,8 +456,8 @@
     .product {
       background: rgba(255,255,255,0.97);
       padding: 18px;
-      border-radius: 10px;
-      box-shadow: 0px 8px 18px rgba(0,0,0,0.15);
+      border-radius: 18px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
       transition: 0.3s;
       cursor: pointer;
       position: relative;
@@ -386,14 +465,14 @@
     }
 
     .product:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
     }
 
     .product img {
       width: 100%;
       height: 190px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 14px;
       border: 1px solid #ddd;
       margin-top: 10px;
     }
@@ -407,7 +486,7 @@
     }
 
     .price {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: bold;
       margin-top: 10px;
       color: #b8860b;
@@ -425,10 +504,10 @@
       position: absolute;
       top: 14px;
       left: 14px;
-      background: #333;
+      background: #111;
       color: white;
       padding: 6px 10px;
-      border-radius: 7px;
+      border-radius: 10px;
       font-size: 12px;
       letter-spacing: 0.5px;
     }
@@ -440,9 +519,55 @@
       background: #b8860b;
       color: white;
       padding: 6px 10px;
-      border-radius: 7px;
+      border-radius: 10px;
       font-size: 12px;
       letter-spacing: 0.5px;
+    }
+
+    /* =========================
+       WHY CHOOSE US
+    ========================== */
+    .why-box {
+      margin-top: 60px;
+      background: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.12);
+      border: 1px solid #e1e1e1;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .why-card {
+      background: #f7f4ee;
+      border: 1px solid #e5e0d7;
+      padding: 18px;
+      border-radius: 14px;
+      transition: 0.3s;
+    }
+
+    .why-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .why-card h3 {
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #222;
+    }
+
+    .why-card p {
+      margin-top: 10px;
+      font-size: 13px;
+      line-height: 1.8;
+      color: #444;
     }
 
     /* =========================
@@ -452,8 +577,8 @@
       margin-top: 70px;
       background: #e8e5de;
       padding: 40px;
-      border-radius: 6px;
-      box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+      border-radius: 18px;
+      box-shadow: 0px 8px 18px rgba(0,0,0,0.1);
       border: 1px solid #d9d6cf;
     }
 
@@ -461,6 +586,7 @@
       margin-top: 0;
       font-size: 28px;
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .about p {
@@ -470,40 +596,117 @@
     }
 
     /* =========================
+       GALLERY
+    ========================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid #ddd;
+      box-shadow: 0px 6px 16px rgba(0,0,0,0.12);
+      transition: 0.3s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    /* =========================
+       REVIEWS
+    ========================== */
+    .review-box {
+      margin-top: 60px;
+      background: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.12);
+      border: 1px solid #e1e1e1;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .review-card {
+      background: #f7f4ee;
+      border: 1px solid #e5e0d7;
+      padding: 18px;
+      border-radius: 14px;
+      transition: 0.3s;
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .review-card h3 {
+      margin: 0;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .review-card p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #444;
+      margin-top: 10px;
+    }
+
+    .stars {
+      color: #b8860b;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+
+    /* =========================
        CONTACT / QUERY SECTION
     ========================== */
     .query-section {
-      margin-top: 40px;
-      background: #5c584f;
+      margin-top: 50px;
+      background: linear-gradient(120deg, #4f4b44, #2b2a27);
       color: white;
       padding: 40px;
-      border-radius: 6px;
+      border-radius: 18px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
       border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0px 12px 35px rgba(0,0,0,0.25);
     }
 
     .query-section h2 {
       margin-top: 0;
       font-size: 26px;
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .query-form input,
     .query-form textarea {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin: 8px 0;
       border: none;
-      border-radius: 6px;
+      border-radius: 12px;
       outline: none;
       font-size: 14px;
       font-family: Georgia, serif;
     }
 
     .query-form textarea {
-      height: 80px;
+      height: 90px;
       resize: none;
     }
 
@@ -515,9 +718,10 @@
       color: white;
       font-size: 14px;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 12px;
       transition: 0.3s;
       font-family: Georgia, serif;
+      font-weight: bold;
     }
 
     .query-form button:hover {
@@ -546,7 +750,7 @@
       left: 0;
       height: 100%;
       width: 100%;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.75);
       z-index: 999;
       justify-content: center;
       align-items: center;
@@ -556,13 +760,14 @@
     .modal-content {
       background: #ffffff;
       width: 96%;
-      max-width: 750px;
-      border-radius: 12px;
+      max-width: 780px;
+      border-radius: 18px;
       padding: 20px;
       text-align: left;
       position: relative;
-      box-shadow: 0px 10px 30px rgba(0,0,0,0.45);
+      box-shadow: 0px 10px 35px rgba(0,0,0,0.55);
       animation: popup 0.25s ease;
+      border: 1px solid #ddd;
     }
 
     @keyframes popup {
@@ -582,10 +787,10 @@
 
     .modal-img {
       width: 100%;
-      max-width: 350px;
-      height: 220px;
+      max-width: 380px;
+      height: 230px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 14px;
       border: 1px solid #ddd;
       display: block;
       margin: auto;
@@ -618,7 +823,7 @@
     .detail-box {
       background: #f1eee7;
       padding: 14px;
-      border-radius: 10px;
+      border-radius: 14px;
       margin-top: 15px;
       border: 1px solid #ddd;
       font-size: 14px;
@@ -626,20 +831,49 @@
     }
 
     /* =========================
+       FLOATING WHATSAPP BUTTON
+    ========================== */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      z-index: 99999;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: bold;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-4px);
+      opacity: 0.95;
+    }
+
+    /* =========================
        FOOTER
     ========================== */
     footer {
       margin-top: 50px;
-      padding: 18px;
-      background: #222;
+      padding: 25px;
+      background: #111;
       color: white;
       text-align: center;
       font-size: 13px;
+      line-height: 1.8;
     }
 
     footer a {
       color: #b8860b;
       text-decoration: none;
+      font-weight: bold;
     }
 
     /* =========================
@@ -647,12 +881,17 @@
     ========================== */
     @media (max-width: 768px) {
       .hero {
-        height: 360px;
+        height: 430px;
+      }
+
+      .hero-text h1 {
+        font-size: 30px;
       }
 
       .menu-box {
         flex-direction: column;
         gap: 12px;
+        top: 22%;
       }
 
       .query-section {
@@ -660,7 +899,7 @@
       }
 
       .category-boxes {
-        margin-top: -40px;
+        margin-top: -50px;
       }
     }
   </style>
@@ -671,27 +910,42 @@
 <!-- TOP NAV -->
 <div class="top-nav">
   <ul>
-    <li><a href="#products">Stone Types</a></li>
-    <li><a href="#products">Landscaping</a></li>
-    <li><a href="#products">Stone Surfaces</a></li>
-    <li><a href="#products">Mosaic Tiles</a></li>
+    <li><a href="#products">Sandstone</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </div>
 
 <!-- HERO SLIDER -->
 <div class="hero" id="home">
 
-  <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1582582429416-2d3d5d38a99f?auto=format&fit=crop&w=1600&q=80')"></div>
+  <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=1600&q=80')"></div>
+  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600573472550-8090bfa8c8ae?auto=format&fit=crop&w=1600&q=80')"></div>
   <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80')"></div>
-  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1615873968403-89c0f66c6e0d?auto=format&fit=crop&w=1600&q=80')"></div>
 
   <div class="brand">Shri Balaji Stone</div>
 
   <div class="menu-box">
     <a href="#home">Home</a>
-    <a href="#about">About Us</a>
-    <a href="#showroom">Showroom</a>
-    <a href="#contact">Contact Us</a>
+    <a href="#products">Products</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <div class="hero-text">
+    <h1>Premium Sandstone & Murti</h1>
+    <p>
+      Rajasthan’s trusted supplier for Sandstone Slabs, Temple Carving, Pillars,
+      Jali Work, Handcrafted Murti & Mandir Architecture.
+    </p>
+
+    <div class="hero-btns">
+      <a class="btn-main" href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Sandstone%20Products%20ka%20rate%20chahiye" target="_blank">
+        WhatsApp Now
+      </a>
+      <a class="btn-dark" href="#products">Explore Products</a>
+    </div>
   </div>
 
   <div class="dots">
@@ -730,31 +984,31 @@
     <div class="category-boxes">
 
       <div class="cat-card">
-        <img src="https://images.unsplash.com/photo-1615873968403-89c0f66c6e0d?auto=format&fit=crop&w=800&q=80">
-        <h3>Stone Types <span>Categories</span></h3>
-        <p>Explore premium stone varieties for flooring, temple and architecture work.</p>
-        <a href="https://wa.me/9166354672?text=I%20want%20Stone%20Types%20Details" target="_blank">Read More</a>
-      </div>
-
-      <div class="cat-card">
-        <img src="https://images.unsplash.com/photo-1600566753151-384129cf4e3e?auto=format&fit=crop&w=800&q=80">
-        <h3>Landscaping <span>Categories</span></h3>
-        <p>Outdoor stones for garden pathways, landscaping, elevation & boundary decor.</p>
-        <a href="https://wa.me/9166354672?text=I%20want%20Landscaping%20Stone%20Details" target="_blank">Read More</a>
-      </div>
-
-      <div class="cat-card">
-        <img src="https://images.unsplash.com/photo-1582582429416-2d3d5d38a99f?auto=format&fit=crop&w=800&q=80">
-        <h3>Stone Surfaces <span>Categories</span></h3>
-        <p>Polished, honed, matte finish surfaces with premium quality cutting and finishing.</p>
-        <a href="https://wa.me/9166354672?text=I%20want%20Stone%20Surface%20Details" target="_blank">Read More</a>
+        <img src="https://images.unsplash.com/photo-1597008641621-83eeb4f0e8f7?auto=format&fit=crop&w=800&q=80">
+        <h3>Sandstone <span>Slabs</span></h3>
+        <p>High quality sandstone slabs for flooring, cladding, walls and elevation work.</p>
+        <a href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Sandstone%20Slabs%20ka%20rate%20chahiye" target="_blank">Get Details</a>
       </div>
 
       <div class="cat-card">
         <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
-        <h3>Mosaic Tiles <span>Categories</span></h3>
-        <p>Decorative mosaic tiles for wall designs, bathroom, kitchen and washbasin area.</p>
-        <a href="https://wa.me/9166354672?text=I%20want%20Mosaic%20Tiles%20Details" target="_blank">Read More</a>
+        <h3>Temple <span>Work</span></h3>
+        <p>Mandir stone work, carving, domes, pillars, arches and traditional designs.</p>
+        <a href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Mandir%20Temple%20work%20ka%20rate%20chahiye" target="_blank">Get Details</a>
+      </div>
+
+      <div class="cat-card">
+        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=800&q=80">
+        <h3>Murti <span>Design</span></h3>
+        <p>Handcrafted sandstone murti for mandir, home temple, vastu and architecture.</p>
+        <a href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Sandstone%20Murti%20ka%20rate%20chahiye" target="_blank">Get Details</a>
+      </div>
+
+      <div class="cat-card">
+        <img src="https://images.unsplash.com/photo-1523413451957-59657e74b9f9?auto=format&fit=crop&w=800&q=80">
+        <h3>Pillars & <span>Jali</span></h3>
+        <p>Sandstone pillars, jali design, haveli style carving and premium finishing.</p>
+        <a href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Pillar%20aur%20Jali%20design%20ka%20rate%20chahiye" target="_blank">Get Details</a>
       </div>
 
     </div>
@@ -762,16 +1016,18 @@
 
   <!-- PRODUCTS -->
   <div class="container" id="products">
-    <h2 class="section-title">Premium Sandstone Products</h2>
-    <p class="section-subtitle">Handcrafted murti, pillars, temple stone work & decorative items</p>
+    <h2 class="section-title">Premium Products</h2>
+    <p class="section-subtitle">
+      Sandstone murti, temple carving, jali, pillars, slabs & decorative sandstone work
+    </p>
 
     <div class="controls">
       <input type="text" id="searchInput" placeholder="Search product name...">
       <select id="categoryFilter">
         <option value="all">All Categories</option>
         <option value="Murti">Murti</option>
-        <option value="Temple">Temple</option>
-        <option value="Decor">Decor</option>
+        <option value="Temple">Temple Work</option>
+        <option value="Slab">Slabs</option>
         <option value="Pillar">Pillar</option>
         <option value="Jali">Jali</option>
       </select>
@@ -780,29 +1036,92 @@
     <div class="product-list" id="productList"></div>
   </div>
 
+  <!-- WHY CHOOSE US -->
+  <div class="container">
+    <div class="why-box">
+      <h2 class="section-title" style="margin-top:0;">Why Choose Us</h2>
+      <p class="section-subtitle">We provide premium sandstone products with trusted quality and finishing</p>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <h3>Premium Quality</h3>
+          <p>Natural Rajasthan sandstone with best cutting, finishing and long-lasting strength.</p>
+        </div>
+
+        <div class="why-card">
+          <h3>Handcrafted Work</h3>
+          <p>Skilled artisans create murti, temple designs, pillars and carvings with perfection.</p>
+        </div>
+
+        <div class="why-card">
+          <h3>All India Delivery</h3>
+          <p>Safe packaging + transport support available for all cities and states.</p>
+        </div>
+
+        <div class="why-card">
+          <h3>Best Rates</h3>
+          <p>Factory direct pricing with custom size and design options available.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ABOUT -->
   <div class="container">
     <div class="about" id="about">
       <h2>About Shri Balaji Stone</h2>
       <p>
-        Welcome to <b>Shri Balaji Stone</b>. We provide premium quality natural stones including
-        <b>Marble, Sandstone, Murti, Tiles, Temple Architecture, Stone Slabs</b>.
+        Welcome to <b>Shri Balaji Stone</b>. We are trusted manufacturer and supplier of
+        <b>Sandstone Slabs, Temple Work, Murti, Pillars, Jali Designs</b>.
         <br><br>
-        Our stone products are handcrafted by skilled artisans with best finishing and long life durability.
-        We deliver all over India with safe packaging.
+        Our sandstone products are handcrafted by skilled artisans with premium finishing.
+        We deliver all over India with safe packaging and trusted transport facility.
+        <br><br>
+        <b>Location:</b> Hingonia, Jaipur (Rajasthan)
       </p>
     </div>
   </div>
 
-  <!-- SHOWROOM -->
+  <!-- GALLERY -->
+  <div class="container" id="gallery">
+    <h2 class="section-title">Gallery</h2>
+    <p class="section-subtitle">Our sandstone work & temple carving projects</p>
+
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1523413451957-59657e74b9f9?auto=format&fit=crop&w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1597008641621-83eeb4f0e8f7?auto=format&fit=crop&w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1615873968403-89c0f66c6e0d?auto=format&fit=crop&w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1600573472550-8090bfa8c8ae?auto=format&fit=crop&w=800&q=80">
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
   <div class="container">
-    <div class="about" id="showroom">
-      <h2>Showroom</h2>
-      <p>
-        Visit our showroom to explore premium stone varieties and temple stone works.
-        <br><br>
-        <b>Location:</b> Sikendra, Jaipur (Rajasthan)
-      </p>
+    <div class="review-box">
+      <h2 class="section-title" style="margin-top:0;">Customer Reviews</h2>
+      <p class="section-subtitle">Trusted by customers across India</p>
+
+      <div class="review-grid">
+        <div class="review-card">
+          <h3>Ravi Sharma</h3>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>Very premium sandstone quality. Murti finishing is amazing. Delivery on time.</p>
+        </div>
+
+        <div class="review-card">
+          <h3>Mahesh Ji</h3>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>Temple pillar work best in Rajasthan. Best rates and proper packing.</p>
+        </div>
+
+        <div class="review-card">
+          <h3>Suresh Patel</h3>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>Jali design and carving very good. Highly recommended for mandir work.</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -814,9 +1133,9 @@
         <form class="query-form" onsubmit="sendWhatsApp(event)">
           <input type="text" id="qname" placeholder="Enter Your Name" required />
           <input type="text" id="qphone" placeholder="Your Contact No." required />
-          <input type="text" id="qaddress" placeholder="Your Address" />
-          <textarea id="qmessage" placeholder="Your Query" required></textarea>
-          <button type="submit">Submit</button>
+          <input type="text" id="qaddress" placeholder="Your Address / City" />
+          <textarea id="qmessage" placeholder="Your Requirement / Query" required></textarea>
+          <button type="submit">Submit on WhatsApp</button>
         </form>
       </div>
 
@@ -826,9 +1145,15 @@
           <b>WhatsApp:</b> <a href="https://wa.me/9166354672" target="_blank">+91 9166354672</a><br>
           <b>UPI ID:</b> 9664092042@ybl<br>
           <b>Email:</b> shribalajistone1992@gmail.com<br><br>
-          <b>Business:</b> Marble | Sandstone | Murti | Tiles | Stone Slabs<br><br>
-          <b>Working Time:</b> 9 AM - 8 PM
+          <b>Business:</b> Sandstone | Murti | Temple Work | Jali | Pillars<br><br>
+          <b>Working Time:</b> 9 AM - 8 PM<br><br>
+          <b>Location:</b> Hingonia, Jaipur (Rajasthan)
         </p>
+
+        <br>
+        <a class="btn" href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Sandstone%20Products%20ka%20rate%20chahiye" target="_blank">
+          Direct WhatsApp Chat
+        </a>
       </div>
     </div>
   </div>
@@ -853,6 +1178,12 @@
     </div>
   </div>
 </div>
+
+<!-- FLOATING WHATSAPP -->
+<a class="floating-whatsapp" target="_blank"
+   href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Sandstone%20Murti%20aur%20Temple%20Work%20ka%20rate%20chahiye">
+  💬 WhatsApp
+</a>
 
 <!-- FIREBASE + PRODUCTS SCRIPT -->
 <script type="module">
@@ -946,47 +1277,54 @@
     }
   });
 
+  /* =========================
+     WHATSAPP AUTO MESSAGE FORM
+  ========================== */
   window.sendWhatsApp = function(event) {
     event.preventDefault();
+
     let name = document.getElementById("qname").value;
     let phone = document.getElementById("qphone").value;
     let address = document.getElementById("qaddress").value;
     let message = document.getElementById("qmessage").value;
 
-    let text = `Hello Shri Balaji Stone,%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0AQuery: ${message}`;
+    let text = `Hello Shri Balaji Stone,%0A%0AName: ${name}%0APhone: ${phone}%0ACity/Address: ${address}%0ARequirement: ${message}%0A%0APlease send me price and details.`;
     window.open("https://wa.me/9166354672?text=" + text, "_blank");
   };
 
-  const whatsappNumber = "919166354672";
+  const whatsappNumber = "9166354672";
 
+  /* =========================
+     PRODUCTS (6 ITEMS)
+  ========================== */
   const products = [
     {
-      name: "Sandstone Murti",
+      name: "Sandstone Murti (Custom)",
       category: "Murti",
-      image: "Screenshot_2026_0325_105345.jpg",
-      price: "₹5,50,000",
-      oldPrice: "₹6,80,000",
-      discount: "17% OFF",
+      image: "https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=900&q=80",
+      price: "Price: On Request",
+      oldPrice: "",
+      discount: "Custom",
       tag: "Best Seller",
-      description: "Premium handcrafted sandstone murti made by skilled artisans.",
+      description: "Premium handcrafted sandstone murti with smooth carving and high finishing.",
       details: {
         Material: "Natural Sandstone",
-        Finish: "Hand Carved & Smooth Polish",
-        Size: "Custom Sizes Available",
+        Finish: "Hand Carved + Smooth Polish",
+        Size: "Custom Size Available",
         Delivery: "All India Delivery Available"
       }
     },
     {
-      name: "Temple Decor Item",
+      name: "Temple Sandstone Work",
       category: "Temple",
-      image: "21-feet-sandstone-temple-500x500.jpg",
-      price: "₹6,00,000",
-      oldPrice: "₹7,50,000",
-      discount: "14% OFF",
-      tag: "Premium",
-      description: "High quality temple sandstone design for traditional mandir architecture.",
+      image: "https://images.unsplash.com/photo-1600573472550-8090bfa8c8ae?auto=format&fit=crop&w=900&q=80",
+      price: "Price: On Request",
+      oldPrice: "",
+      discount: "Premium",
+      tag: "Temple",
+      description: "Complete mandir temple sandstone carving work including dome, arch and walls.",
       details: {
-        Material: "Premium Sandstone",
+        Material: "Premium Rajasthan Sandstone",
         Finish: "Traditional Temple Carving",
         Size: "As per Requirement",
         Delivery: "Safe Packaging + Transport"
@@ -995,33 +1333,65 @@
     {
       name: "Sandstone Decorative Jali",
       category: "Jali",
-      image: "Screenshot_2026_0325_105345.jpg",
-      price: "₹5,50,000",
-      oldPrice: "₹6,00,000",
-      discount: "21% OFF",
+      image: "https://images.unsplash.com/photo-1523413451957-59657e74b9f9?auto=format&fit=crop&w=900&q=80",
+      price: "Price: On Request",
+      oldPrice: "",
+      discount: "Hot Deal",
       tag: "Trending",
-      description: "Beautiful sandstone jali for windows and walls.",
+      description: "Beautiful sandstone jali for windows, ventilation and wall decoration.",
       details: {
         Material: "Natural Sandstone",
         Finish: "Hand Carved Jali Work",
-        Size: "2ft to 10ft Available",
+        Size: "2ft to 12ft Available",
         Delivery: "All India Delivery"
       }
     },
     {
       name: "Sandstone Pillar Design",
       category: "Pillar",
-      image: "21-feet-sandstone-temple-500x500.jpg",
-      price: "₹5,50,000",
-      oldPrice: "₹6,20,000",
-      discount: "20% OFF",
-      tag: "New",
-      description: "Royal pillar carving design for haveli and temple.",
+      image: "https://images.unsplash.com/photo-1597008641621-83eeb4f0e8f7?auto=format&fit=crop&w=900&q=80",
+      price: "Price: On Request",
+      oldPrice: "",
+      discount: "New",
+      tag: "Premium",
+      description: "Royal pillar carving design for haveli, mandir and luxury architecture.",
       details: {
         Material: "Rajasthan Sandstone",
         Finish: "Hand Carved Pillar Work",
         Size: "6ft / 8ft / 10ft Available",
         Delivery: "Transport Facility Available"
+      }
+    },
+    {
+      name: "Sandstone Slab Flooring",
+      category: "Slab",
+      image: "https://images.unsplash.com/photo-1615873968403-89c0f66c6e0d?auto=format&fit=crop&w=900&q=80",
+      price: "Price: On Request",
+      oldPrice: "",
+      discount: "Bulk",
+      tag: "Slabs",
+      description: "Premium sandstone slabs for flooring, outdoor paving and elevation cladding.",
+      details: {
+        Material: "Natural Sandstone",
+        Finish: "Natural / Honed / Polished",
+        Thickness: "15mm / 20mm / 25mm",
+        Delivery: "All India Transport Available"
+      }
+    },
+    {
+      name: "Sandstone Garden Path Tiles",
+      category: "Slab",
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
+      price: "Price: On Request",
+      oldPrice: "",
+      discount: "Outdoor",
+      tag: "Landscape",
+      description: "Outdoor garden pathway sandstone tiles for landscape and boundary design.",
+      details: {
+        Material: "Premium Sandstone",
+        Finish: "Natural Rough Finish",
+        Sizes: "1x1 / 2x2 / Custom",
+        Delivery: "Safe Packaging Available"
       }
     }
   ];
@@ -1045,7 +1415,7 @@
         <div class="discount-tag">${p.discount}</div>
         <h3>${p.name}</h3>
         <img src="${p.image}">
-        <p class="price">${p.price} <span class="old-price">${p.oldPrice}</span></p>
+        <p class="price">${p.price}</p>
         <p style="font-size:13px; opacity:0.8;">Category: <b>${p.category}</b></p>
         <button class="btn">View Details</button>
       `;
@@ -1074,7 +1444,7 @@
   window.openModal = function(p) {
     document.getElementById("modalImage").src = p.image;
     document.getElementById("modalTitle").innerText = p.name;
-    document.getElementById("modalPrice").innerHTML = `${p.price} <span class="old-price">${p.oldPrice}</span>`;
+    document.getElementById("modalPrice").innerHTML = `${p.price}`;
 
     document.getElementById("modalDesc").innerHTML = `
       <b>Product Description:</b><br>
@@ -1088,7 +1458,7 @@
 
     document.getElementById("modalDetails").innerHTML = detailsHTML;
 
-    const msg = `Hello, I want to order: ${p.name} (${p.price})`;
+    const msg = `Hello Shri Balaji Stone,%0A%0AI want details for: ${p.name}%0ACategory: ${p.category}%0A%0APlease send me price & delivery info.`;
     document.getElementById("modalWhatsapp").href =
       `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
 
@@ -1122,7 +1492,9 @@
 </script>
 
 <footer>
-  © 1992 Shri Balaji Stone | Premium Theme |
+  © 1992 Shri Balaji Stone | Premium Sandstone & Murti Supplier <br>
+  📍 Hingonia, Jaipur (Rajasthan) <br>
+  💳 UPI: <b>9664092042@ybl</b> <br>
   <a href="https://wa.me/9166354672" target="_blank">WhatsApp Now</a>
 </footer>
 
