@@ -9,22 +9,23 @@
     body {
       margin: 0;
       font-family: Georgia, serif;
-      background: #f3f1ed;
+      background: #fbf6ea;
       color: #2f2b26;
       scroll-behavior: smooth;
     }
 
     /* =========================
-       TOP SMALL NAV
+       PREMIUM TOP NAVBAR
     ========================== */
     .top-nav {
-      background: rgba(255,255,255,0.95);
-      border-bottom: 1px solid #ddd;
-      padding: 10px 0;
+      background: rgba(255, 250, 240, 0.97);
+      border-bottom: 1px solid #e3dac8;
+      padding: 12px 0;
       position: sticky;
       top: 0;
-      z-index: 999;
-      backdrop-filter: blur(10px);
+      z-index: 9999;
+      backdrop-filter: blur(12px);
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
     }
 
     .top-nav ul {
@@ -32,7 +33,7 @@
       padding: 0;
       display: flex;
       justify-content: center;
-      gap: 22px;
+      gap: 18px;
       list-style: none;
       font-size: 12px;
       letter-spacing: 1px;
@@ -42,13 +43,16 @@
 
     .top-nav ul li a {
       text-decoration: none;
-      color: #444;
+      color: #3a2e20;
       transition: 0.3s;
       font-weight: bold;
+      padding: 7px 12px;
+      border-radius: 10px;
     }
 
     .top-nav ul li a:hover {
       color: #b8860b;
+      background: rgba(184,134,11,0.12);
     }
 
     /* =========================
@@ -56,7 +60,7 @@
     ========================== */
     .hero {
       position: relative;
-      height: 520px;
+      height: 540px;
       overflow: hidden;
     }
 
@@ -67,7 +71,7 @@
       background-position: center;
       opacity: 0;
       transition: opacity 1.2s ease-in-out;
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
 
     .hero-slide.active {
@@ -78,7 +82,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.55);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.68), rgba(0,0,0,0.45));
       z-index: 1;
     }
 
@@ -91,37 +95,39 @@
       font-size: 30px;
       font-weight: bold;
       letter-spacing: 2px;
-      text-shadow: 0px 4px 12px rgba(0,0,0,0.8);
+      text-shadow: 0px 4px 12px rgba(0,0,0,0.85);
     }
 
     .hero-text {
       position: absolute;
       z-index: 5;
-      top: 45%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
       color: white;
       width: 92%;
-      max-width: 850px;
+      max-width: 900px;
     }
 
     .hero-text h1 {
-      font-size: 45px;
+      font-size: 48px;
       margin: 0;
       letter-spacing: 1px;
       text-transform: uppercase;
+      text-shadow: 0px 4px 14px rgba(0,0,0,0.8);
     }
 
     .hero-text p {
-      margin-top: 12px;
+      margin-top: 14px;
       font-size: 16px;
-      opacity: 0.9;
+      opacity: 0.92;
       line-height: 1.7;
+      text-shadow: 0px 3px 10px rgba(0,0,0,0.7);
     }
 
     .hero-btns {
-      margin-top: 20px;
+      margin-top: 22px;
       display: flex;
       justify-content: center;
       gap: 12px;
@@ -129,8 +135,8 @@
     }
 
     .hero-btns a {
-      padding: 12px 20px;
-      border-radius: 10px;
+      padding: 12px 22px;
+      border-radius: 14px;
       font-size: 14px;
       font-weight: bold;
       text-decoration: none;
@@ -139,58 +145,26 @@
     }
 
     .hero-btns .btn-main {
-      background: #b8860b;
+      background: linear-gradient(90deg, #d4af37, #b8860b);
       color: white;
-      box-shadow: 0px 6px 18px rgba(0,0,0,0.35);
+      box-shadow: 0px 8px 22px rgba(0,0,0,0.35);
     }
 
     .hero-btns .btn-main:hover {
-      background: #8b6508;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      opacity: 0.95;
     }
 
     .hero-btns .btn-dark {
-      background: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.15);
       color: white;
       border: 1px solid rgba(255,255,255,0.35);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
     }
 
     .hero-btns .btn-dark:hover {
       background: rgba(255,255,255,0.25);
-      transform: translateY(-2px);
-    }
-
-    /* Center menu box */
-    .menu-box {
-      position: absolute;
-      top: 18%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 5;
-      background: rgba(255,255,255,0.92);
-      padding: 16px 28px;
-      border-radius: 12px;
-      display: flex;
-      gap: 22px;
-      box-shadow: 0px 10px 25px rgba(0,0,0,0.45);
-      text-transform: uppercase;
-      font-size: 13px;
-      letter-spacing: 1px;
-      flex-wrap: wrap;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,0.6);
-    }
-
-    .menu-box a {
-      text-decoration: none;
-      color: #222;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .menu-box a:hover {
-      color: #b8860b;
+      transform: translateY(-3px);
     }
 
     /* slider dots */
@@ -214,20 +188,34 @@
     }
 
     .dot.active {
-      background: #b8860b;
+      background: #d4af37;
     }
 
     /* =========================
        CONTAINER
     ========================== */
     .container {
-      max-width: 1150px;
+      max-width: 1180px;
       margin: auto;
       padding: 25px 15px;
     }
 
     /* =========================
-       CATEGORY CARDS (PHOTO LIKE)
+       FADE-IN ANIMATION
+    ========================== */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 1s;
+    }
+
+    .fade-section.show {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    /* =========================
+       CATEGORY CARDS
     ========================== */
     .category-boxes {
       display: grid;
@@ -239,21 +227,21 @@
     }
 
     .cat-card {
-      background: white;
-      border-radius: 16px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0px 10px 25px rgba(0,0,0,0.18);
+      box-shadow: 0px 12px 28px rgba(0,0,0,0.14);
       transition: 0.3s;
-      border: 1px solid #e1e1e1;
+      border: 1px solid #eadfca;
     }
 
     .cat-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-10px);
     }
 
     .cat-card img {
       width: 100%;
-      height: 170px;
+      height: 180px;
       object-fit: cover;
     }
 
@@ -262,7 +250,7 @@
       font-size: 15px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: #222;
+      color: #2b241a;
     }
 
     .cat-card h3 span {
@@ -273,23 +261,26 @@
       margin: 0 15px 15px;
       font-size: 13px;
       line-height: 1.7;
-      color: #555;
+      color: #5a4a35;
     }
 
     .cat-card a {
       display: inline-block;
       margin: 0 15px 20px;
-      padding: 9px 15px;
-      background: #b8860b;
+      padding: 10px 16px;
+      background: linear-gradient(90deg, #d4af37, #b8860b);
       color: white;
       font-size: 13px;
       text-decoration: none;
-      border-radius: 10px;
+      border-radius: 12px;
       transition: 0.3s;
+      font-weight: bold;
+      box-shadow: 0px 5px 16px rgba(0,0,0,0.2);
     }
 
     .cat-card a:hover {
-      background: #8b6508;
+      transform: translateY(-2px);
+      opacity: 0.95;
     }
 
     /* =========================
@@ -297,43 +288,44 @@
     ========================== */
     #loginPage {
       text-align: center;
-      padding: 50px 15px;
+      padding: 55px 15px;
     }
 
     .login-box {
-      max-width: 450px;
+      max-width: 470px;
       margin: auto;
-      background: rgba(255,255,255,0.95);
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0px 12px 35px rgba(0,0,0,0.2);
-      border: 1px solid #ddd;
+      background: rgba(255,255,255,0.97);
+      padding: 34px;
+      border-radius: 20px;
+      box-shadow: 0px 16px 45px rgba(0,0,0,0.18);
+      border: 1px solid #eadfca;
     }
 
     .login-box h2 {
       margin-top: 0;
       font-size: 26px;
       letter-spacing: 1px;
-      color: #333;
+      color: #2b241a;
     }
 
     .login-box p {
       font-size: 14px;
       opacity: 0.8;
       margin-top: -10px;
+      color: #5a4a35;
     }
 
     #loginPage input {
       padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #cfcfcf;
+      border-radius: 12px;
+      border: 1px solid #d9cbb1;
       width: 90%;
-      max-width: 320px;
+      max-width: 330px;
       font-size: 16px;
       outline: none;
       margin-top: 10px;
       font-family: Georgia, serif;
-      background: #fbfbfb;
+      background: #fffdf7;
     }
 
     /* =========================
@@ -343,25 +335,26 @@
       display: inline-block;
       margin-top: 15px;
       padding: 12px 20px;
-      background: #b8860b;
+      background: linear-gradient(90deg, #d4af37, #b8860b);
       color: white;
-      border-radius: 12px;
+      border-radius: 14px;
       text-decoration: none;
       font-size: 15px;
       cursor: pointer;
       border: none;
       transition: 0.25s;
       font-family: Georgia, serif;
-      box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.15);
+      font-weight: bold;
     }
 
     .btn:hover {
-      background: #8b6508;
       transform: translateY(-2px);
+      opacity: 0.95;
     }
 
     .btn2 {
-      background: #222;
+      background: #2a241c;
     }
 
     .btn2:hover {
@@ -373,13 +366,13 @@
     ========================== */
     .logout-btn {
       position: fixed;
-      top: 75px;
+      top: 85px;
       right: 15px;
       z-index: 99;
       padding: 10px 14px;
       font-size: 13px;
       display: none;
-      border-radius: 12px;
+      border-radius: 14px;
     }
 
     /* =========================
@@ -394,10 +387,10 @@
     ========================== */
     .section-title {
       margin-top: 70px;
-      font-size: 32px;
+      font-size: 34px;
       letter-spacing: 1px;
       text-align: center;
-      color: #222;
+      color: #2b241a;
       text-transform: uppercase;
     }
 
@@ -405,7 +398,7 @@
       text-align: center;
       margin-top: -8px;
       font-size: 14px;
-      color: #666;
+      color: #6a5a44;
       line-height: 1.7;
     }
 
@@ -421,23 +414,23 @@
       gap: 12px;
       justify-content: center;
       align-items: center;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.96);
       padding: 18px;
-      border-radius: 16px;
-      box-shadow: 0px 6px 20px rgba(0,0,0,0.12);
-      border: 1px solid #e5e5e5;
+      border-radius: 18px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+      border: 1px solid #eadfca;
     }
 
     .controls input, .controls select {
       padding: 12px;
-      border-radius: 12px;
-      border: 1px solid #cfcfcf;
+      border-radius: 14px;
+      border: 1px solid #d9cbb1;
       font-size: 15px;
       outline: none;
       width: 260px;
       max-width: 90%;
       font-family: Georgia, serif;
-      background: #fbfbfb;
+      background: #fffdf7;
     }
 
     /* =========================
@@ -456,32 +449,33 @@
     .product {
       background: rgba(255,255,255,0.97);
       padding: 18px;
-      border-radius: 18px;
-      box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
+      border-radius: 20px;
+      box-shadow: 0px 14px 32px rgba(0,0,0,0.13);
       transition: 0.3s;
       cursor: pointer;
       position: relative;
-      border: 1px solid #e1e1e1;
+      border: 1px solid #eadfca;
     }
 
     .product:hover {
-      transform: translateY(-8px);
+      transform: translateY(-10px);
     }
 
     .product img {
       width: 100%;
-      height: 190px;
+      height: 195px;
       object-fit: cover;
-      border-radius: 14px;
-      border: 1px solid #ddd;
-      margin-top: 10px;
+      border-radius: 16px;
+      border: 1px solid #e1d4bb;
+      margin-top: 12px;
+      box-shadow: 0px 8px 18px rgba(0,0,0,0.12);
     }
 
     .product h3 {
       margin: 0;
-      font-size: 18px;
-      letter-spacing: 0.5px;
-      color: #222;
+      font-size: 17px;
+      letter-spacing: 0.6px;
+      color: #2b241a;
       text-transform: uppercase;
     }
 
@@ -492,22 +486,14 @@
       color: #b8860b;
     }
 
-    .old-price {
-      text-decoration: line-through;
-      opacity: 0.6;
-      margin-left: 8px;
-      font-size: 13px;
-      color: #444;
-    }
-
     .tag {
       position: absolute;
       top: 14px;
       left: 14px;
-      background: #111;
+      background: #2a241c;
       color: white;
       padding: 6px 10px;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 12px;
       letter-spacing: 0.5px;
     }
@@ -516,83 +502,45 @@
       position: absolute;
       top: 14px;
       right: 14px;
-      background: #b8860b;
+      background: linear-gradient(90deg, #d4af37, #b8860b);
       color: white;
       padding: 6px 10px;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 12px;
       letter-spacing: 0.5px;
     }
 
-    /* =========================
-       WHY CHOOSE US
-    ========================== */
-    .why-box {
-      margin-top: 60px;
-      background: white;
-      padding: 35px;
-      border-radius: 18px;
-      box-shadow: 0px 10px 25px rgba(0,0,0,0.12);
-      border: 1px solid #e1e1e1;
+    .product-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
     }
 
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-top: 20px;
-    }
-
-    .why-card {
-      background: #f7f4ee;
-      border: 1px solid #e5e0d7;
-      padding: 18px;
-      border-radius: 14px;
+    .mini-btn {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
       transition: 0.3s;
     }
 
-    .why-card:hover {
-      transform: translateY(-5px);
+    .mini-btn.view {
+      background: linear-gradient(90deg, #d4af37, #b8860b);
+      color: white;
     }
 
-    .why-card h3 {
-      margin: 0;
-      font-size: 15px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #222;
+    .mini-btn.whatsapp {
+      background: #25D366;
+      color: white;
     }
 
-    .why-card p {
-      margin-top: 10px;
-      font-size: 13px;
-      line-height: 1.8;
-      color: #444;
-    }
-
-    /* =========================
-       ABOUT SECTION
-    ========================== */
-    .about {
-      margin-top: 70px;
-      background: #e8e5de;
-      padding: 40px;
-      border-radius: 18px;
-      box-shadow: 0px 8px 18px rgba(0,0,0,0.1);
-      border: 1px solid #d9d6cf;
-    }
-
-    .about h2 {
-      margin-top: 0;
-      font-size: 28px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .about p {
-      font-size: 14px;
-      line-height: 1.9;
-      color: #333;
+    .mini-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
     }
 
     /* =========================
@@ -607,16 +555,127 @@
 
     .gallery-grid img {
       width: 100%;
-      height: 190px;
+      height: 200px;
       object-fit: cover;
-      border-radius: 16px;
-      border: 1px solid #ddd;
-      box-shadow: 0px 6px 16px rgba(0,0,0,0.12);
+      border-radius: 18px;
+      border: 1px solid #eadfca;
+      box-shadow: 0px 10px 24px rgba(0,0,0,0.12);
       transition: 0.3s;
+      cursor: pointer;
     }
 
     .gallery-grid img:hover {
-      transform: scale(1.03);
+      transform: scale(1.04);
+    }
+
+    /* =========================
+       LIGHTBOX POPUP
+    ========================== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 999999;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+    }
+
+    .lightbox img {
+      width: 100%;
+      max-width: 900px;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 18px;
+      border: 2px solid rgba(255,255,255,0.25);
+      box-shadow: 0px 12px 40px rgba(0,0,0,0.7);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 38px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .lightbox-close:hover {
+      color: #d4af37;
+    }
+
+    /* =========================
+       WHY CHOOSE US
+    ========================== */
+    .why-box {
+      margin-top: 60px;
+      background: rgba(255,255,255,0.96);
+      padding: 38px;
+      border-radius: 20px;
+      box-shadow: 0px 14px 35px rgba(0,0,0,0.12);
+      border: 1px solid #eadfca;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .why-card {
+      background: #fff7e5;
+      border: 1px solid #eadfca;
+      padding: 18px;
+      border-radius: 16px;
+      transition: 0.3s;
+    }
+
+    .why-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .why-card h3 {
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #2b241a;
+    }
+
+    .why-card p {
+      margin-top: 10px;
+      font-size: 13px;
+      line-height: 1.8;
+      color: #5a4a35;
+    }
+
+    /* =========================
+       ABOUT SECTION
+    ========================== */
+    .about {
+      margin-top: 70px;
+      background: #fff3d9;
+      padding: 42px;
+      border-radius: 20px;
+      box-shadow: 0px 12px 28px rgba(0,0,0,0.1);
+      border: 1px solid #eadfca;
+    }
+
+    .about h2 {
+      margin-top: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #2b241a;
+    }
+
+    .about p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: #3b2f22;
     }
 
     /* =========================
@@ -624,11 +683,11 @@
     ========================== */
     .review-box {
       margin-top: 60px;
-      background: white;
-      padding: 35px;
-      border-radius: 18px;
-      box-shadow: 0px 10px 25px rgba(0,0,0,0.12);
-      border: 1px solid #e1e1e1;
+      background: rgba(255,255,255,0.96);
+      padding: 38px;
+      border-radius: 20px;
+      box-shadow: 0px 14px 35px rgba(0,0,0,0.12);
+      border: 1px solid #eadfca;
     }
 
     .review-grid {
@@ -639,15 +698,15 @@
     }
 
     .review-card {
-      background: #f7f4ee;
-      border: 1px solid #e5e0d7;
+      background: #fff7e5;
+      border: 1px solid #eadfca;
       padding: 18px;
-      border-radius: 14px;
+      border-radius: 16px;
       transition: 0.3s;
     }
 
     .review-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
     }
 
     .review-card h3 {
@@ -655,12 +714,13 @@
       font-size: 15px;
       text-transform: uppercase;
       letter-spacing: 1px;
+      color: #2b241a;
     }
 
     .review-card p {
       font-size: 13px;
       line-height: 1.8;
-      color: #444;
+      color: #5a4a35;
       margin-top: 10px;
     }
 
@@ -675,15 +735,15 @@
     ========================== */
     .query-section {
       margin-top: 50px;
-      background: linear-gradient(120deg, #4f4b44, #2b2a27);
+      background: linear-gradient(120deg, #2b241c, #111);
       color: white;
-      padding: 40px;
-      border-radius: 18px;
+      padding: 42px;
+      border-radius: 20px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
       border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0px 12px 35px rgba(0,0,0,0.25);
+      box-shadow: 0px 14px 40px rgba(0,0,0,0.28);
     }
 
     .query-section h2 {
@@ -699,7 +759,7 @@
       padding: 12px;
       margin: 8px 0;
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
       outline: none;
       font-size: 14px;
       font-family: Georgia, serif;
@@ -713,31 +773,51 @@
     .query-form button {
       width: 100%;
       padding: 12px;
-      background: #b8860b;
+      background: linear-gradient(90deg, #d4af37, #b8860b);
       border: none;
       color: white;
       font-size: 14px;
       cursor: pointer;
-      border-radius: 12px;
+      border-radius: 14px;
       transition: 0.3s;
       font-family: Georgia, serif;
       font-weight: bold;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.22);
     }
 
     .query-form button:hover {
-      background: #8b6508;
+      transform: translateY(-2px);
+      opacity: 0.95;
     }
 
     .contact-info p {
       font-size: 14px;
       line-height: 1.9;
       margin: 0;
+      opacity: 0.95;
     }
 
     .contact-info a {
       color: #ffd27d;
       text-decoration: none;
       font-weight: bold;
+    }
+
+    /* =========================
+       GOOGLE MAP
+    ========================== */
+    .map-box {
+      margin-top: 18px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0px 12px 30px rgba(0,0,0,0.35);
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 250px;
+      border: none;
     }
 
     /* =========================
@@ -761,13 +841,13 @@
       background: #ffffff;
       width: 96%;
       max-width: 780px;
-      border-radius: 18px;
-      padding: 20px;
+      border-radius: 20px;
+      padding: 22px;
       text-align: left;
       position: relative;
       box-shadow: 0px 10px 35px rgba(0,0,0,0.55);
       animation: popup 0.25s ease;
-      border: 1px solid #ddd;
+      border: 1px solid #eadfca;
     }
 
     @keyframes popup {
@@ -787,13 +867,14 @@
 
     .modal-img {
       width: 100%;
-      max-width: 380px;
-      height: 230px;
+      max-width: 420px;
+      height: 240px;
       object-fit: cover;
-      border-radius: 14px;
-      border: 1px solid #ddd;
+      border-radius: 16px;
+      border: 1px solid #eadfca;
       display: block;
       margin: auto;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.12);
     }
 
     .modal-title {
@@ -803,6 +884,7 @@
       font-weight: bold;
       letter-spacing: 1px;
       text-transform: uppercase;
+      color: #2b241a;
     }
 
     .modal-price {
@@ -817,21 +899,21 @@
       margin-top: 15px;
       font-size: 15px;
       line-height: 1.8;
-      color: #333;
+      color: #3b2f22;
     }
 
     .detail-box {
-      background: #f1eee7;
+      background: #fff7e5;
       padding: 14px;
-      border-radius: 14px;
+      border-radius: 16px;
       margin-top: 15px;
-      border: 1px solid #ddd;
+      border: 1px solid #eadfca;
       font-size: 14px;
       line-height: 1.8;
     }
 
     /* =========================
-       FLOATING WHATSAPP BUTTON
+       FLOATING BUTTONS
     ========================== */
     .floating-whatsapp {
       position: fixed;
@@ -852,7 +934,27 @@
       gap: 8px;
     }
 
-    .floating-whatsapp:hover {
+    .floating-call {
+      position: fixed;
+      bottom: 18px;
+      left: 18px;
+      z-index: 99999;
+      background: #d4af37;
+      color: black;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: bold;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .floating-whatsapp:hover,
+    .floating-call:hover {
       transform: translateY(-4px);
       opacity: 0.95;
     }
@@ -862,16 +964,16 @@
     ========================== */
     footer {
       margin-top: 50px;
-      padding: 25px;
+      padding: 28px;
       background: #111;
       color: white;
       text-align: center;
       font-size: 13px;
-      line-height: 1.8;
+      line-height: 1.9;
     }
 
     footer a {
-      color: #b8860b;
+      color: #d4af37;
       text-decoration: none;
       font-weight: bold;
     }
@@ -881,17 +983,11 @@
     ========================== */
     @media (max-width: 768px) {
       .hero {
-        height: 430px;
+        height: 440px;
       }
 
       .hero-text h1 {
         font-size: 30px;
-      }
-
-      .menu-box {
-        flex-direction: column;
-        gap: 12px;
-        top: 22%;
       }
 
       .query-section {
@@ -899,7 +995,11 @@
       }
 
       .category-boxes {
-        margin-top: -50px;
+        margin-top: -55px;
+      }
+
+      .floating-call {
+        bottom: 80px;
       }
     }
   </style>
@@ -910,7 +1010,8 @@
 <!-- TOP NAV -->
 <div class="top-nav">
   <ul>
-    <li><a href="#products">Sandstone</a></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#products">Products</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -922,16 +1023,9 @@
 
   <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=1600&q=80')"></div>
   <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600573472550-8090bfa8c8ae?auto=format&fit=crop&w=1600&q=80')"></div>
-  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80')"></div>
+  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1615873968403-89c0f66c6e0d?auto=format&fit=crop&w=1600&q=80')"></div>
 
   <div class="brand">Shri Balaji Stone</div>
-
-  <div class="menu-box">
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-  </div>
 
   <div class="hero-text">
     <h1>Premium Sandstone & Murti</h1>
@@ -980,32 +1074,32 @@
 <div id="mainSite">
 
   <!-- CATEGORY BOXES -->
-  <div class="container">
+  <div class="container fade-section">
     <div class="category-boxes">
 
       <div class="cat-card">
-        <img src="https://images.unsplash.com/photo-1597008641621-83eeb4f0e8f7?auto=format&fit=crop&w=800&q=80">
+        <img src="https://images.unsplash.com/photo-1597008641621-83eeb4f0e8f7?auto=format&fit=crop&w=900&q=80">
         <h3>Sandstone <span>Slabs</span></h3>
         <p>High quality sandstone slabs for flooring, cladding, walls and elevation work.</p>
         <a href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Sandstone%20Slabs%20ka%20rate%20chahiye" target="_blank">Get Details</a>
       </div>
 
       <div class="cat-card">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
+        <img src="https://images.unsplash.com/photo-1600573472550-8090bfa8c8ae?auto=format&fit=crop&w=900&q=80">
         <h3>Temple <span>Work</span></h3>
         <p>Mandir stone work, carving, domes, pillars, arches and traditional designs.</p>
         <a href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Mandir%20Temple%20work%20ka%20rate%20chahiye" target="_blank">Get Details</a>
       </div>
 
       <div class="cat-card">
-        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=800&q=80">
+        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=900&q=80">
         <h3>Murti <span>Design</span></h3>
         <p>Handcrafted sandstone murti for mandir, home temple, vastu and architecture.</p>
         <a href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Sandstone%20Murti%20ka%20rate%20chahiye" target="_blank">Get Details</a>
       </div>
 
       <div class="cat-card">
-        <img src="https://images.unsplash.com/photo-1523413451957-59657e74b9f9?auto=format&fit=crop&w=800&q=80">
+        <img src="https://images.unsplash.com/photo-1523413451957-59657e74b9f9?auto=format&fit=crop&w=900&q=80">
         <h3>Pillars & <span>Jali</span></h3>
         <p>Sandstone pillars, jali design, haveli style carving and premium finishing.</p>
         <a href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Pillar%20aur%20Jali%20design%20ka%20rate%20chahiye" target="_blank">Get Details</a>
@@ -1015,7 +1109,7 @@
   </div>
 
   <!-- PRODUCTS -->
-  <div class="container" id="products">
+  <div class="container fade-section" id="products">
     <h2 class="section-title">Premium Products</h2>
     <p class="section-subtitle">
       Sandstone murti, temple carving, jali, pillars, slabs & decorative sandstone work
@@ -1036,8 +1130,23 @@
     <div class="product-list" id="productList"></div>
   </div>
 
+  <!-- GALLERY -->
+  <div class="container fade-section" id="gallery">
+    <h2 class="section-title">Gallery</h2>
+    <p class="section-subtitle">Our sandstone work & temple carving projects</p>
+
+    <div class="gallery-grid">
+      <img onclick="openLightbox(this.src)" src="https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=900&q=80">
+      <img onclick="openLightbox(this.src)" src="https://images.unsplash.com/photo-1600573472550-8090bfa8c8ae?auto=format&fit=crop&w=900&q=80">
+      <img onclick="openLightbox(this.src)" src="https://images.unsplash.com/photo-1523413451957-59657e74b9f9?auto=format&fit=crop&w=900&q=80">
+      <img onclick="openLightbox(this.src)" src="https://images.unsplash.com/photo-1597008641621-83eeb4f0e8f7?auto=format&fit=crop&w=900&q=80">
+      <img onclick="openLightbox(this.src)" src="https://images.unsplash.com/photo-1615873968403-89c0f66c6e0d?auto=format&fit=crop&w=900&q=80">
+      <img onclick="openLightbox(this.src)" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80">
+    </div>
+  </div>
+
   <!-- WHY CHOOSE US -->
-  <div class="container">
+  <div class="container fade-section">
     <div class="why-box">
       <h2 class="section-title" style="margin-top:0;">Why Choose Us</h2>
       <p class="section-subtitle">We provide premium sandstone products with trusted quality and finishing</p>
@@ -1067,7 +1176,7 @@
   </div>
 
   <!-- ABOUT -->
-  <div class="container">
+  <div class="container fade-section">
     <div class="about" id="about">
       <h2>About Shri Balaji Stone</h2>
       <p>
@@ -1082,23 +1191,8 @@
     </div>
   </div>
 
-  <!-- GALLERY -->
-  <div class="container" id="gallery">
-    <h2 class="section-title">Gallery</h2>
-    <p class="section-subtitle">Our sandstone work & temple carving projects</p>
-
-    <div class="gallery-grid">
-      <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=800&q=80">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
-      <img src="https://images.unsplash.com/photo-1523413451957-59657e74b9f9?auto=format&fit=crop&w=800&q=80">
-      <img src="https://images.unsplash.com/photo-1597008641621-83eeb4f0e8f7?auto=format&fit=crop&w=800&q=80">
-      <img src="https://images.unsplash.com/photo-1615873968403-89c0f66c6e0d?auto=format&fit=crop&w=800&q=80">
-      <img src="https://images.unsplash.com/photo-1600573472550-8090bfa8c8ae?auto=format&fit=crop&w=800&q=80">
-    </div>
-  </div>
-
   <!-- REVIEWS -->
-  <div class="container">
+  <div class="container fade-section">
     <div class="review-box">
       <h2 class="section-title" style="margin-top:0;">Customer Reviews</h2>
       <p class="section-subtitle">Trusted by customers across India</p>
@@ -1125,8 +1219,8 @@
     </div>
   </div>
 
-  <!-- CONTACT + QUERY -->
-  <div class="container" id="contact">
+  <!-- CONTACT -->
+  <div class="container fade-section" id="contact">
     <div class="query-section">
       <div>
         <h2>Quick Query</h2>
@@ -1150,6 +1244,12 @@
           <b>Location:</b> Hingonia, Jaipur (Rajasthan)
         </p>
 
+        <div class="map-box">
+          <iframe 
+            src="https://www.google.com/maps?q=Hingonia%20Jaipur%20Rajasthan&output=embed">
+          </iframe>
+        </div>
+
         <br>
         <a class="btn" href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Sandstone%20Products%20ka%20rate%20chahiye" target="_blank">
           Direct WhatsApp Chat
@@ -1160,7 +1260,7 @@
 
 </div>
 
-<!-- MODAL -->
+<!-- PRODUCT MODAL -->
 <div class="modal" id="productModal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -1179,10 +1279,20 @@
   </div>
 </div>
 
-<!-- FLOATING WHATSAPP -->
+<!-- GALLERY LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightboxImg" src="">
+</div>
+
+<!-- FLOATING BUTTONS -->
 <a class="floating-whatsapp" target="_blank"
    href="https://wa.me/9166354672?text=Hello%20Shri%20Balaji%20Stone%2C%20mujhe%20Sandstone%20Murti%20aur%20Temple%20Work%20ka%20rate%20chahiye">
   💬 WhatsApp
+</a>
+
+<a class="floating-call" href="tel:+919166354672">
+  📞 Call
 </a>
 
 <!-- FIREBASE + PRODUCTS SCRIPT -->
@@ -1277,9 +1387,6 @@
     }
   });
 
-  /* =========================
-     WHATSAPP AUTO MESSAGE FORM
-  ========================== */
   window.sendWhatsApp = function(event) {
     event.preventDefault();
 
@@ -1292,18 +1399,27 @@
     window.open("https://wa.me/9166354672?text=" + text, "_blank");
   };
 
+  /* GALLERY LIGHTBOX */
+  window.openLightbox = function(src) {
+    document.getElementById("lightboxImg").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+  };
+
+  window.closeLightbox = function() {
+    document.getElementById("lightbox").style.display = "none";
+  };
+
   const whatsappNumber = "9166354672";
 
-  /* =========================
-     PRODUCTS (6 ITEMS)
-  ========================== */
+  const fallbackMurtiImage =
+    "https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=900&q=80";
+
   const products = [
     {
       name: "Sandstone Murti (Custom)",
       category: "Murti",
       image: "https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=900&q=80",
       price: "Price: On Request",
-      oldPrice: "",
       discount: "Custom",
       tag: "Best Seller",
       description: "Premium handcrafted sandstone murti with smooth carving and high finishing.",
@@ -1319,7 +1435,6 @@
       category: "Temple",
       image: "https://images.unsplash.com/photo-1600573472550-8090bfa8c8ae?auto=format&fit=crop&w=900&q=80",
       price: "Price: On Request",
-      oldPrice: "",
       discount: "Premium",
       tag: "Temple",
       description: "Complete mandir temple sandstone carving work including dome, arch and walls.",
@@ -1335,7 +1450,6 @@
       category: "Jali",
       image: "https://images.unsplash.com/photo-1523413451957-59657e74b9f9?auto=format&fit=crop&w=900&q=80",
       price: "Price: On Request",
-      oldPrice: "",
       discount: "Hot Deal",
       tag: "Trending",
       description: "Beautiful sandstone jali for windows, ventilation and wall decoration.",
@@ -1351,7 +1465,6 @@
       category: "Pillar",
       image: "https://images.unsplash.com/photo-1597008641621-83eeb4f0e8f7?auto=format&fit=crop&w=900&q=80",
       price: "Price: On Request",
-      oldPrice: "",
       discount: "New",
       tag: "Premium",
       description: "Royal pillar carving design for haveli, mandir and luxury architecture.",
@@ -1367,7 +1480,6 @@
       category: "Slab",
       image: "https://images.unsplash.com/photo-1615873968403-89c0f66c6e0d?auto=format&fit=crop&w=900&q=80",
       price: "Price: On Request",
-      oldPrice: "",
       discount: "Bulk",
       tag: "Slabs",
       description: "Premium sandstone slabs for flooring, outdoor paving and elevation cladding.",
@@ -1381,9 +1493,8 @@
     {
       name: "Sandstone Garden Path Tiles",
       category: "Slab",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
+      image: "",
       price: "Price: On Request",
-      oldPrice: "",
       discount: "Outdoor",
       tag: "Landscape",
       description: "Outdoor garden pathway sandstone tiles for landscape and boundary design.",
@@ -1406,9 +1517,12 @@
     }
 
     list.forEach((p) => {
+      if (!p.image || p.image.trim() === "") {
+        p.image = fallbackMurtiImage;
+      }
+
       const card = document.createElement("div");
       card.className = "product";
-      card.onclick = () => openModal(p);
 
       card.innerHTML = `
         <div class="tag">${p.tag}</div>
@@ -1417,8 +1531,16 @@
         <img src="${p.image}">
         <p class="price">${p.price}</p>
         <p style="font-size:13px; opacity:0.8;">Category: <b>${p.category}</b></p>
-        <button class="btn">View Details</button>
+
+        <div class="product-buttons">
+          <button class="mini-btn view" onclick='openModal(${JSON.stringify(p).replace(/'/g, "\\'")})'>View Details</button>
+          <a class="mini-btn whatsapp" target="_blank"
+             href="https://wa.me/${whatsappNumber}?text=Hello%20Shri%20Balaji%20Stone%2C%20I%20want%20details%20for%20${encodeURIComponent(p.name)}">
+             WhatsApp
+          </a>
+        </div>
       `;
+
       productList.appendChild(card);
     });
   }
@@ -1489,11 +1611,22 @@
     if (next >= slides.length) next = 0;
     setSlide(next);
   }, 4000);
+
+  /* SCROLL ANIMATION */
+  const sections = document.querySelectorAll(".fade-section");
+  window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+      const pos = sec.getBoundingClientRect().top;
+      if (pos < window.innerHeight - 100) {
+        sec.classList.add("show");
+      }
+    });
+  });
 </script>
 
 <footer>
   © 1992 Shri Balaji Stone | Premium Sandstone & Murti Supplier <br>
-  📍 Hingonia, Jaipur (Rajasthan) <br>
+  📍 sikendra, Jaipur (Rajasthan) <br>
   💳 UPI: <b>9664092042@ybl</b> <br>
   <a href="https://wa.me/9166354672" target="_blank">WhatsApp Now</a>
 </footer>
