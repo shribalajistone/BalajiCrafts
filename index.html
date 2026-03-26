@@ -246,6 +246,18 @@
       background: #d2b48c;
       font-size: 14px;
     }
+
+    /* Login Inputs */
+    #loginPage input {
+      padding: 12px;
+      border-radius: 8px;
+      border: 2px solid #c2a679;
+      width: 260px;
+      max-width: 90%;
+      font-size: 16px;
+      outline: none;
+      font-family: 'Georgia', serif;
+    }
   </style>
 </head>
 
@@ -320,212 +332,250 @@
   </div>
 </div>
 
-<!-- 🔥 FIREBASE SCRIPT -->
+<!-- 🔥 FIREBASE SCRIPT (FIXED) -->
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { 
+    getAuth, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAVA0qolBB18eg0QuS2ZH4K-iZ5FyeDY4s",
-  authDomain: "shri-balaji-stonee.firebaseapp.com",
-  projectId: "shri-balaji-stonee",
-  storageBucket: "shri-balaji-stonee.firebasestorage.app",
-  messagingSenderId: "930310986407",
-  appId: "1:930310986407:web:8bb6d5b194d4dabea61982"
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyAVA0qolBB18eg0QuS2ZH4K-iZ5FyeDY4s",
+    authDomain: "shri-balaji-stonee.firebaseapp.com",
+    projectId: "shri-balaji-stonee",
+    storageBucket: "shri-balaji-stonee.appspot.com",
+    messagingSenderId: "930310986407",
+    appId: "1:930310986407:web:8bb6d5b194d4dabea61982"
+  };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-/* ======================
-   🔐 AUTH SYSTEM
-====================== */
+  // SIGNUP
+  window.signup = function () {
+    let email = document.getElementById("email").value.trim();
+    let pass = document.getElementById("password").value.trim();
 
-// SIGNUP
-window.signup = function () {
-  let email = document.getElementById("email").value;
-  let pass = document.getElementById("password").value;
+    if(email === "" || pass === ""){
+      alert("Please enter email and password!");
+      return;
+    }
 
-  createUserWithEmailAndPassword(auth, email, pass)
-    .then(() => alert("Signup Success ✅"))
-    .catch(err => alert(err.message));
-}
+    createUserWithEmailAndPassword(auth, email, pass)
+      .then(() => {
+        alert("Signup Success ✅");
+      })
+      .catch(err => alert(err.message));
+  }
 
-// LOGIN
-window.login = function () {
-  let email = document.getElementById("email").value;
-  let pass = document.getElementById("password").value;
+  // LOGIN
+  window.login = function () {
+    let email = document.getElementById("email").value.trim();
+    let pass = document.getElementById("password").value.trim();
 
-  signInWithEmailAndPassword(auth, email, pass)
-    .then(() => {
-      alert("Login Success ✅");
+    if(email === "" || pass === ""){
+      alert("Please enter email and password!");
+      return;
+    }
+
+    signInWithEmailAndPassword(auth, email, pass)
+      .then(() => {
+        alert("Login Success ✅");
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("mainSite").style.display = "block";
+      })
+      .catch(err => alert(err.message));
+  }
+
+  // SKIP LOGIN
+  window.skipLogin = function () {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("mainSite").style.display = "block";
+  }
+
+  // AUTO LOGIN CHECK
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
       document.getElementById("loginPage").style.display = "none";
       document.getElementById("mainSite").style.display = "block";
-    })
-    .catch(err => alert(err.message));
-}
-
-// SKIP LOGIN
-window.skipLogin = function () {
-  document.getElementById("loginPage").style.display = "none";
-  document.getElementById("mainSite").style.display = "block";
-}
-
-
-/* ======================
-   🏺 PRODUCTS DATA
-====================== */
-
-const whatsappNumber = "919166354672";
-
-const products = [
-  {
-    name: "Sandstone Murti",
-    category: "Murti",
-    image: "Screenshot_2026_0325_105345.jpg",
-    price: "₹1,50,000",
-    oldPrice: "₹1,80,000",
-    discount: "17% OFF",
-    tag: "Best Seller",
-    description: "Premium handcrafted sandstone murti made by skilled artisans. Perfect for temple, home mandir, and religious places.",
-    details: {
-      material: "Natural Sandstone",
-      finish: "Hand Carved & Smooth Polish",
-      size: "Custom Sizes Available",
-      delivery: "All India Delivery Available",
-      customization: "Name / Design Customization Available",
-      usage: "Temple, Home Mandir, Decoration"
     }
-  },
-  {
-    name: "Temple Decor Item",
-    category: "Temple",
-    image: "21-feet-sandstone-temple-500x500.jpg",
-    price: "₹3,00,000",
-    oldPrice: "₹3,50,000",
-    discount: "14% OFF",
-    tag: "Premium",
-    description: "High quality temple sandstone design for traditional mandir architecture. Strong finishing and long life product.",
-    details: {
-      material: "Premium Sandstone",
-      finish: "Traditional Temple Carving",
-      size: "As per Requirement",
-      delivery: "Safe Packaging + Transport",
-      customization: "Design & Size Custom Available",
-      usage: "Temple Construction & Decor"
+  });
+
+  /* ======================
+     🏺 PRODUCTS DATA
+  ====================== */
+
+  const whatsappNumber = "919166354672";
+
+  const products = [
+    {
+      name: "Sandstone Murti",
+      category: "Murti",
+      image: "Screenshot_2026_0325_105345.jpg",
+      price: "₹1,50,000",
+      oldPrice: "₹1,80,000",
+      discount: "17% OFF",
+      tag: "Best Seller",
+      description: "Premium handcrafted sandstone murti made by skilled artisans. Perfect for temple, home mandir, and religious places.",
+      details: {
+        material: "Natural Sandstone",
+        finish: "Hand Carved & Smooth Polish",
+        size: "Custom Sizes Available",
+        delivery: "All India Delivery Available",
+        customization: "Name / Design Customization Available",
+        usage: "Temple, Home Mandir, Decoration"
+      }
+    },
+    {
+      name: "Temple Decor Item",
+      category: "Temple",
+      image: "21-feet-sandstone-temple-500x500.jpg",
+      price: "₹3,00,000",
+      oldPrice: "₹3,50,000",
+      discount: "14% OFF",
+      tag: "Premium",
+      description: "High quality temple sandstone design for traditional mandir architecture. Strong finishing and long life product.",
+      details: {
+        material: "Premium Sandstone",
+        finish: "Traditional Temple Carving",
+        size: "As per Requirement",
+        delivery: "Safe Packaging + Transport",
+        customization: "Design & Size Custom Available",
+        usage: "Temple Construction & Decor"
+      }
+    },
+    {
+      name: "Sandstone Decorative Jali",
+      category: "Jali",
+      image: "Screenshot_2026_0325_105345.jpg",
+      price: "₹55,000",
+      oldPrice: "₹70,000",
+      discount: "21% OFF",
+      tag: "Trending",
+      description: "Beautiful sandstone jali for windows and walls. Gives royal Rajasthan look with strong finishing.",
+      details: {
+        material: "Natural Sandstone",
+        finish: "Hand Carved Jali Work",
+        size: "2ft to 10ft Available",
+        delivery: "All India Delivery",
+        customization: "Any Pattern Available",
+        usage: "Windows, Walls, Temple Design"
+      }
+    },
+    {
+      name: "Sandstone Pillar Design",
+      category: "Pillar",
+      image: "21-feet-sandstone-temple-500x500.jpg",
+      price: "₹95,000",
+      oldPrice: "₹1,20,000",
+      discount: "20% OFF",
+      tag: "New",
+      description: "Royal pillar carving design for haveli and temple. Strong sandstone with premium hand carving.",
+      details: {
+        material: "Rajasthan Sandstone",
+        finish: "Hand Carved Pillar Work",
+        size: "6ft / 8ft / 10ft Available",
+        delivery: "Transport Facility Available",
+        customization: "Custom pillar designs possible",
+        usage: "Temple, Haveli, Gate, Interior"
+      }
     }
-  },
-  {
-    name: "Sandstone Decorative Jali",
-    category: "Jali",
-    image: "Screenshot_2026_0325_105345.jpg",
-    price: "₹55,000",
-    oldPrice: "₹70,000",
-    discount: "21% OFF",
-    tag: "Trending",
-    description: "Beautiful sandstone jali for windows and walls. Gives royal Rajasthan look with strong finishing.",
-    details: {
-      material: "Natural Sandstone",
-      finish: "Hand Carved Jali Work",
-      size: "2ft to 10ft Available",
-      delivery: "All India Delivery",
-      customization: "Any Pattern Available",
-      usage: "Windows, Walls, Temple Design"
+  ];
+
+  /* ======================
+     📌 RENDER PRODUCTS
+  ====================== */
+
+  function renderProducts(list) {
+    const productList = document.getElementById("productList");
+    productList.innerHTML = "";
+
+    if (list.length === 0) {
+      productList.innerHTML = "<p><b>No products found ❌</b></p>";
+      return;
     }
-  },
-  {
-    name: "Sandstone Pillar Design",
-    category: "Pillar",
-    image: "21-feet-sandstone-temple-500x500.jpg",
-    price: "₹95,000",
-    oldPrice: "₹1,20,000",
-    discount: "20% OFF",
-    tag: "New",
-    description: "Royal pillar carving design for haveli and temple. Strong sandstone with premium hand carving.",
-    details: {
-      material: "Rajasthan Sandstone",
-      finish: "Hand Carved Pillar Work",
-      size: "6ft / 8ft / 10ft Available",
-      delivery: "Transport Facility Available",
-      customization: "Custom pillar designs possible",
-      usage: "Temple, Haveli, Gate, Interior"
-    }
+
+    list.forEach((p, index) => {
+      const card = document.createElement("div");
+      card.className = "product";
+      card.onclick = () => openModal(index);
+
+      card.innerHTML = `
+        <div class="tag">${p.tag}</div>
+        <div class="discount-tag">${p.discount}</div>
+        <h3>${p.name}</h3>
+        <img src="${p.image}">
+        <p class="price">${p.price} <span class="old-price">${p.oldPrice}</span></p>
+        <p style="font-size:14px; opacity:0.8;">Category: <b>${p.category}</b></p>
+        <button class="btn">View Details</button>
+      `;
+
+      productList.appendChild(card);
+    });
   }
-];
 
+  renderProducts(products);
 
-/* ======================
-   📌 RENDER PRODUCTS
-====================== */
+  /* ======================
+     🔍 SEARCH + FILTER
+  ====================== */
 
-function renderProducts(list) {
-  const productList = document.getElementById("productList");
-  productList.innerHTML = "";
+  function filterProducts() {
+    const searchValue = document.getElementById("searchInput").value.toLowerCase();
+    const categoryValue = document.getElementById("categoryFilter").value;
 
-  if (list.length === 0) {
-    productList.innerHTML = "<p><b>No products found ❌</b></p>";
-    return;
+    const filtered = products.filter(p => {
+      const matchName = p.name.toLowerCase().includes(searchValue);
+      const matchCategory = categoryValue === "all" || p.category === categoryValue;
+      return matchName && matchCategory;
+    });
+
+    renderProducts(filtered);
   }
 
-  list.forEach((p, index) => {
-    const card = document.createElement("div");
-    card.className = "product";
-    card.onclick = () => openModal(index);
+  document.getElementById("searchInput").addEventListener("input", filterProducts);
+  document.getElementById("categoryFilter").addEventListener("change", filterProducts);
 
-    card.innerHTML = `
-      <div class="tag">${p.tag}</div>
-      <div class="discount-tag">${p.discount}</div>
-      <h3>${p.name}</h3>
-      <img src="${p.image}">
-      <p class="price">${p.price} <span class="old-price">${p.oldPrice}</span></p>
-      <p style="font-size:14px; opacity:0.8;">Category: <b>${p.category}</b></p>
-      <button class="btn">View Details</button>
+  /* ======================
+     🪟 PRODUCT MODAL
+  ====================== */
+
+  window.openModal = function(index) {
+    const p = products[index];
+
+    document.getElementById("modalImage").src = p.image;
+    document.getElementById("modalTitle").innerText = p.name;
+    document.getElementById("modalPrice").innerHTML = `${p.price} <span class="old-price">${p.oldPrice}</span>`;
+
+    document.getElementById("modalDesc").innerHTML = `
+      <b>Product Description:</b><br>
+      ${p.description}
     `;
 
-    productList.appendChild(card);
-  });
-}
+    let detailsHTML = "<b>Product Details:</b><br><br>";
+    for (let key in p.details) {
+      detailsHTML += `✅ <b>${key}:</b> ${p.details[key]}<br>`;
+    }
 
-renderProducts(products);
+    document.getElementById("modalDetails").innerHTML = detailsHTML;
 
+    const msg = `Hello, I want to order: ${p.name} (${p.price})`;
+    document.getElementById("modalWhatsapp").href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
 
-/* ======================
-   🔍 SEARCH + FILTER
-====================== */
+    document.getElementById("productModal").style.display = "flex";
+  }
 
-function filterProducts() {
-  const searchValue = document.getElementById("searchInput").value.toLowerCase();
-  const categoryValue = document.getElementById("categoryFilter").value;
+  window.closeModal = function() {
+    document.getElementById("productModal").style.display = "none";
+  }
+</script>
 
-  const filtered = products.filter(p => {
-    const matchName = p.name.toLowerCase().includes(searchValue);
-    const matchCategory = categoryValue === "all" || p.category === categoryValue;
-    return matchName && matchCategory;
-  });
+<footer>
+  © 2026 Shri Balaji Stone | All Rights Reserved
+</footer>
 
-  renderProducts(filtered);
-}
-
-document.getElementById("searchInput").addEventListener("input", filterProducts);
-document.getElementById("categoryFilter").addEventListener("change", filterProducts);
-
-
-/* ======================
-   🪟 PRODUCT MODAL
-====================== */
-
-window.openModal = function(index) {
-  const p = products[index];
-
-  document.getElementById("modalImage").src = p.image;
-  document.getElementById("modalTitle").innerText = p.name;
-  document.getElementById("modalPrice").innerHTML = `${p.price} <span class="old-price">${p.oldPrice}</span>`;
-
-  document.getElementById("modalDesc").innerHTML = `
-    <b>Product Description:</b><br>
-    ${p.description}
-  `;
-
-  document.getElementById("modalDetails").innerHTML = `
-    <b>Product Details:</b><br><br>
-    🪨 <b>M
+</body>
+</html>
