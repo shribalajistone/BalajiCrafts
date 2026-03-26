@@ -482,26 +482,8 @@
         customization: "Custom pillar designs possible",
         usage: "Temple, Haveli, Gate, Interior"
       }
-    },
-    {
-      name: "Sandstone Murti",
-      category: "Murti",
-      image: "Screenshot_2026_0325_105345.jpg",
-      price: "₹1,50,000",
-      oldPrice: "₹1,80,000",
-      discount: "17% OFF",
-      tag: "Best Seller",
-      description: "Premium handcrafted sandstone murti made by skilled artisans. Perfect for temple, home mandir, and religious places.",
-      details: {
-        material: "Natural Sandstone",
-        finish: "Hand Carved & Smooth Polish",
-        size: "Custom Sizes Available",
-        delivery: "All India Delivery Available",
-        customization: "Name / Design Customization Available",
-        usage: "Temple, Home Mandir, Decoration"
-      }
-    ];
-    
+    }
+  ];
 
   /* ======================
      📌 RENDER PRODUCTS
@@ -558,42 +540,4 @@
   document.getElementById("categoryFilter").addEventListener("change", filterProducts);
 
   /* ======================
-     🪟 PRODUCT MODAL
-  ====================== */
-
-  window.openModal = function(index) {
-    const p = products[index];
-
-    document.getElementById("modalImage").src = p.image;
-    document.getElementById("modalTitle").innerText = p.name;
-    document.getElementById("modalPrice").innerHTML = `${p.price} <span class="old-price">${p.oldPrice}</span>`;
-
-    document.getElementById("modalDesc").innerHTML = `
-      <b>Product Description:</b><br>
-      ${p.description}
-    `;
-
-    let detailsHTML = "<b>Product Details:</b><br><br>";
-    for (let key in p.details) {
-      detailsHTML += `✅ <b>${key}:</b> ${p.details[key]}<br>`;
-    }
-
-    document.getElementById("modalDetails").innerHTML = detailsHTML;
-
-    const msg = `Hello, I want to order: ${p.name} (${p.price})`;
-    document.getElementById("modalWhatsapp").href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
-
-    document.getElementById("productModal").style.display = "flex";
-  }
-
-  window.closeModal = function() {
-    document.getElementById("productModal").style.display = "none";
-  }
-</script>
-
-<footer>
-  © 1992 Shri Balaji Stone | All Rights Reserved
-</footer>
-
-</body>
-</html>
+     🪟 PRODU
