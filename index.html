@@ -141,6 +141,7 @@
       cursor: pointer;
       border: none;
       transition: 0.2s;
+      font-family: 'Georgia', serif;
     }
 
     .btn:hover {
@@ -258,6 +259,14 @@
       outline: none;
       font-family: 'Georgia', serif;
     }
+
+    /* Logout Button */
+    .logout-btn {
+      float: right;
+      margin-top: -8px;
+      font-size: 14px;
+      padding: 8px 14px;
+    }
   </style>
 </head>
 
@@ -265,6 +274,7 @@
 
 <header>
   🏺 Shri Balaji Stone
+  <button class="btn btn2 logout-btn" onclick="logout()">Logout</button>
 </header>
 
 <!-- 🔐 LOGIN PAGE -->
@@ -289,7 +299,7 @@
     <!-- Search + Filter -->
     <div class="controls">
       <input type="text" id="searchInput" placeholder="Search product name...">
-      
+
       <select id="categoryFilter">
         <option value="all">All Categories</option>
         <option value="Murti">Murti</option>
@@ -332,14 +342,15 @@
   </div>
 </div>
 
-<!-- 🔥 FIREBASE SCRIPT (FIXED) -->
+<!-- 🔥 FIREBASE SCRIPT -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { 
-    getAuth, 
-    createUserWithEmailAndPassword, 
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
   const firebaseConfig = {
@@ -354,29 +365,41 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
+  // ✅ SHOW MAIN SITE
+  window.showMainSite = function () {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("mainSite").style.display = "block";
+  };
+
+  // ✅ SHOW LOGIN PAGE
+  window.showLoginPage = function () {
+    document.getElementById("loginPage").style.display = "block";
+    document.getElementById("mainSite").style.display = "none";
+  };
+
   // SIGNUP
   window.signup = function () {
     let email = document.getElementById("email").value.trim();
     let pass = document.getElementById("password").value.trim();
 
-    if(email === "" || pass === ""){
+    if (email === "" || pass === "") {
       alert("Please enter email and password!");
       return;
     }
 
     createUserWithEmailAndPassword(auth, email, pass)
       .then(() => {
-        alert("Signup Success ✅");
+        alert("Signup Success ✅ Now Login");
       })
       .catch(err => alert(err.message));
-  }
+  };
 
   // LOGIN
   window.login = function () {
     let email = document.getElementById("email").value.trim();
     let pass = document.getElementById("password").value.trim();
 
-    if(email === "" || pass === ""){
+    if (email === "" || pass === "") {
       alert("Please enter email and password!");
       return;
     }
@@ -384,23 +407,37 @@
     signInWithEmailAndPassword(auth, email, pass)
       .then(() => {
         alert("Login Success ✅");
-        document.getElementById("loginPage").style.display = "none";
-        document.getElementById("mainSite").style.display = "block";
+        localStorage.removeItem("skipLogin");
+        showMainSite();
       })
       .catch(err => alert(err.message));
-  }
+  };
 
   // SKIP LOGIN
   window.skipLogin = function () {
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("mainSite").style.display = "block";
-  }
+    localStorage.setItem("skipLogin", "true");
+    showMainSite();
+  };
+
+  // LOGOUT
+  window.logout = function () {
+    signOut(auth).then(() => {
+      localStorage.removeItem("skipLogin");
+      alert("Logout Success ✅");
+      showLoginPage();
+    });
+  };
 
   // AUTO LOGIN CHECK
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      document.getElementById("loginPage").style.display = "none";
-      document.getElementById("mainSite").style.display = "block";
+      showMainSite();
+    } else {
+      if (localStorage.getItem("skipLogin") === "true") {
+        showMainSite();
+      } else {
+        showLoginPage();
+      }
     }
   });
 
@@ -498,10 +535,10 @@
       return;
     }
 
-    list.forEach((p, index) => {
+    list.forEach((p) => {
       const card = document.createElement("div");
       card.className = "product";
-      card.onclick = () => openModal(index);
+      card.onclick = () => openModal(p);
 
       card.innerHTML = `
         <div class="tag">${p.tag}</div>
@@ -540,4 +577,41 @@
   document.getElementById("categoryFilter").addEventListener("change", filterProducts);
 
   /* ======================
-     🪟 PRODU
+     🪟 PRODUCT MODAL
+  ====================== */
+
+  window.openModal = function(p) {
+    document.getElementById("modalImage").src = p.image;
+    document.getElementById("modalTitle").innerText = p.name;
+    document.getElementById("modalPrice").innerHTML = `${p.price} <span class="old-price">${p.oldPrice}</span>`;
+
+    document.getElementById("modalDesc").innerHTML = `
+      <b>Product Description:</b><br>
+      ${p.description}
+    `;
+
+    let detailsHTML = "<b>Product Details:</b><br><br>";
+    for (let key in p.details) {
+      detailsHTML += `✅ <b>${key}:</b> ${p.details[key]}<br>`;
+    }
+
+    document.getElementById("modalDetails").innerHTML = detailsHTML;
+
+    const msg = `Hello, I want to order: ${p.name} (${p.price})`;
+    document.getElementById("modalWhatsapp").href =
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
+
+    document.getElementById("productModal").style.display = "flex";
+  };
+
+  window.closeModal = function() {
+    document.getElementById("productModal").style.display = "none";
+  };
+</script>
+
+<footer>
+  © 1992 Shri Balaji Stone | All Rights Reserved
+</footer>
+
+</body>
+</html>
