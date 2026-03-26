@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>shri balaji stone</title>
+  <title>Shri Balaji Stone</title>
   <style>
     body {
       margin: 0;
@@ -16,6 +16,9 @@
       padding: 20px;
       font-size: 28px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     h2 {
@@ -26,33 +29,222 @@
       padding: 20px;
     }
 
+    /* 🔍 Search + Filter */
+    .controls {
+      width: 90%;
+      max-width: 900px;
+      margin: 20px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      background: #ead7b7;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(90,62,27,0.2);
+    }
+
+    .controls input, .controls select {
+      padding: 12px;
+      border-radius: 8px;
+      border: 2px solid #c2a679;
+      font-size: 16px;
+      outline: none;
+      width: 250px;
+      max-width: 90%;
+      font-family: 'Georgia', serif;
+    }
+
+    /* 🏺 Product Cards */
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 10px;
+    }
+
     .product {
       background: #ead7b7;
-      margin: 20px auto;
-      padding: 20px;
-      width: 80%;
+      padding: 18px;
       border-radius: 15px;
-      box-shadow: 0 0 10px rgba(90,62,27,0.3);
+      box-shadow: 0 0 12px rgba(90,62,27,0.3);
+      transition: 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .product:hover {
+      transform: scale(1.03);
     }
 
     .product img {
-      width: 160px;
-      border-radius: 10px;
+      width: 100%;
+      max-width: 220px;
+      border-radius: 12px;
       border: 3px solid #c2a679;
+    }
+
+    .product h3 {
+      margin: 10px 0 5px;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #5a3e1b;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      opacity: 0.6;
+      margin-left: 8px;
+      font-size: 14px;
+    }
+
+    /* Tags */
+    .tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #a67c52;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    .discount-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #5a3e1b;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 12px;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 10px;
+      margin-top: 12px;
       padding: 10px 20px;
       background: #a67c52;
       color: white;
-      border-radius: 5px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #8b5e34;
+    }
+
+    .btn2 {
+      background: #5a3e1b;
+    }
+
+    .btn2:hover {
+      background: #3d2a12;
     }
 
     /* 🔒 Hide main site before login */
     #mainSite {
       display: none;
+    }
+
+    /* 📌 Popup Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0,0,0,0.65);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .modal-content {
+      background: #fdf2dc;
+      width: 95%;
+      max-width: 700px;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: left;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      animation: popup 0.3s ease;
+    }
+
+    @keyframes popup {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 26px;
+      cursor: pointer;
+      color: #5a3e1b;
+      font-weight: bold;
+    }
+
+    .modal-img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 12px;
+      border: 3px solid #c2a679;
+      display: block;
+      margin: auto;
+    }
+
+    .modal-title {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .modal-price {
+      text-align: center;
+      font-size: 20px;
+      margin: 8px 0;
+      font-weight: bold;
+    }
+
+    .modal-desc {
+      margin-top: 15px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .detail-box {
+      background: #ead7b7;
+      padding: 12px;
+      border-radius: 12px;
+      margin-top: 15px;
+      box-shadow: 0 0 8px rgba(90,62,27,0.2);
+      font-size: 15px;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      background: #d2b48c;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -60,7 +252,7 @@
 <body>
 
 <header>
-  🏺 shri balaji stone
+  🏺 Shri Balaji Stone
 </header>
 
 <!-- 🔐 LOGIN PAGE -->
@@ -73,35 +265,59 @@
   <button class="btn" onclick="signup()">Sign Up</button>
   <button class="btn" onclick="login()">Login</button>
   <br><br>
-  <button class="btn" onclick="skipLogin()">Skip Login</button>
+  <button class="btn btn2" onclick="skipLogin()">Skip Login</button>
 </div>
 
 <!-- 🏠 MAIN WEBSITE -->
 <div id="mainSite">
 
   <div class="container">
-    <h2>✨ Handcrafted Products</h2>
+    <h2>✨ Handcrafted Sandstone Products</h2>
 
-    <div class="product">
-      <h3>Sandstone Murti</h3>
-      <img src="Screenshot_2026_0325_105345.jpg">
-      <p>Price: ₹1,50,000</p>
-      <a class="btn" href="https://wa.me/919166354672?text=I want to buy Sandstone Murti">Buy</a>
+    <!-- Search + Filter -->
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search product name...">
+      
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="Murti">Murti</option>
+        <option value="Temple">Temple</option>
+        <option value="Decor">Decor</option>
+        <option value="Pillar">Pillar</option>
+        <option value="Jali">Jali</option>
+      </select>
     </div>
 
-    <div class="product">
-      <h3>Temple Decor Item</h3>
-      <img src="21-feet-sandstone-temple-500x500.jpg">
-      <p>Price: ₹3,00,000</p>
-      <a class="btn" href="https://wa.me/919166354672?text=I want to buy Temple Decor Item">Buy</a>
-    </div>
+    <!-- Products Grid -->
+    <div class="product-list" id="productList"></div>
   </div>
 
   <div class="container">
     <h2>📞 Contact</h2>
-    <p>WhatsApp: +919166354672</p>
+    <p><b>WhatsApp:</b> +91 9166354672</p>
+    <p><b>Location:</b> Rajasthan, India</p>
   </div>
 
+</div>
+
+<!-- 📌 PRODUCT DETAIL POPUP -->
+<div class="modal" id="productModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+
+    <img id="modalImage" class="modal-img" src="">
+    <div id="modalTitle" class="modal-title"></div>
+    <div id="modalPrice" class="modal-price"></div>
+
+    <div id="modalDesc" class="modal-desc"></div>
+
+    <div class="detail-box" id="modalDetails"></div>
+
+    <div style="text-align:center; margin-top: 15px;">
+      <a id="modalWhatsapp" class="btn" target="_blank">Order on WhatsApp</a>
+      <button class="btn btn2" onclick="closeModal()">Close</button>
+    </div>
+  </div>
 </div>
 
 <!-- 🔥 FIREBASE SCRIPT -->
@@ -120,6 +336,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+
+/* ======================
+   🔐 AUTH SYSTEM
+====================== */
 
 // SIGNUP
 window.signup = function () {
@@ -150,11 +370,162 @@ window.skipLogin = function () {
   document.getElementById("loginPage").style.display = "none";
   document.getElementById("mainSite").style.display = "block";
 }
-</script>
 
-<footer>
-  © 2026 shri balaji stone
-</footer>
 
-</body>
-</html>
+/* ======================
+   🏺 PRODUCTS DATA
+====================== */
+
+const whatsappNumber = "919166354672";
+
+const products = [
+  {
+    name: "Sandstone Murti",
+    category: "Murti",
+    image: "Screenshot_2026_0325_105345.jpg",
+    price: "₹1,50,000",
+    oldPrice: "₹1,80,000",
+    discount: "17% OFF",
+    tag: "Best Seller",
+    description: "Premium handcrafted sandstone murti made by skilled artisans. Perfect for temple, home mandir, and religious places.",
+    details: {
+      material: "Natural Sandstone",
+      finish: "Hand Carved & Smooth Polish",
+      size: "Custom Sizes Available",
+      delivery: "All India Delivery Available",
+      customization: "Name / Design Customization Available",
+      usage: "Temple, Home Mandir, Decoration"
+    }
+  },
+  {
+    name: "Temple Decor Item",
+    category: "Temple",
+    image: "21-feet-sandstone-temple-500x500.jpg",
+    price: "₹3,00,000",
+    oldPrice: "₹3,50,000",
+    discount: "14% OFF",
+    tag: "Premium",
+    description: "High quality temple sandstone design for traditional mandir architecture. Strong finishing and long life product.",
+    details: {
+      material: "Premium Sandstone",
+      finish: "Traditional Temple Carving",
+      size: "As per Requirement",
+      delivery: "Safe Packaging + Transport",
+      customization: "Design & Size Custom Available",
+      usage: "Temple Construction & Decor"
+    }
+  },
+  {
+    name: "Sandstone Decorative Jali",
+    category: "Jali",
+    image: "Screenshot_2026_0325_105345.jpg",
+    price: "₹55,000",
+    oldPrice: "₹70,000",
+    discount: "21% OFF",
+    tag: "Trending",
+    description: "Beautiful sandstone jali for windows and walls. Gives royal Rajasthan look with strong finishing.",
+    details: {
+      material: "Natural Sandstone",
+      finish: "Hand Carved Jali Work",
+      size: "2ft to 10ft Available",
+      delivery: "All India Delivery",
+      customization: "Any Pattern Available",
+      usage: "Windows, Walls, Temple Design"
+    }
+  },
+  {
+    name: "Sandstone Pillar Design",
+    category: "Pillar",
+    image: "21-feet-sandstone-temple-500x500.jpg",
+    price: "₹95,000",
+    oldPrice: "₹1,20,000",
+    discount: "20% OFF",
+    tag: "New",
+    description: "Royal pillar carving design for haveli and temple. Strong sandstone with premium hand carving.",
+    details: {
+      material: "Rajasthan Sandstone",
+      finish: "Hand Carved Pillar Work",
+      size: "6ft / 8ft / 10ft Available",
+      delivery: "Transport Facility Available",
+      customization: "Custom pillar designs possible",
+      usage: "Temple, Haveli, Gate, Interior"
+    }
+  }
+];
+
+
+/* ======================
+   📌 RENDER PRODUCTS
+====================== */
+
+function renderProducts(list) {
+  const productList = document.getElementById("productList");
+  productList.innerHTML = "";
+
+  if (list.length === 0) {
+    productList.innerHTML = "<p><b>No products found ❌</b></p>";
+    return;
+  }
+
+  list.forEach((p, index) => {
+    const card = document.createElement("div");
+    card.className = "product";
+    card.onclick = () => openModal(index);
+
+    card.innerHTML = `
+      <div class="tag">${p.tag}</div>
+      <div class="discount-tag">${p.discount}</div>
+      <h3>${p.name}</h3>
+      <img src="${p.image}">
+      <p class="price">${p.price} <span class="old-price">${p.oldPrice}</span></p>
+      <p style="font-size:14px; opacity:0.8;">Category: <b>${p.category}</b></p>
+      <button class="btn">View Details</button>
+    `;
+
+    productList.appendChild(card);
+  });
+}
+
+renderProducts(products);
+
+
+/* ======================
+   🔍 SEARCH + FILTER
+====================== */
+
+function filterProducts() {
+  const searchValue = document.getElementById("searchInput").value.toLowerCase();
+  const categoryValue = document.getElementById("categoryFilter").value;
+
+  const filtered = products.filter(p => {
+    const matchName = p.name.toLowerCase().includes(searchValue);
+    const matchCategory = categoryValue === "all" || p.category === categoryValue;
+    return matchName && matchCategory;
+  });
+
+  renderProducts(filtered);
+}
+
+document.getElementById("searchInput").addEventListener("input", filterProducts);
+document.getElementById("categoryFilter").addEventListener("change", filterProducts);
+
+
+/* ======================
+   🪟 PRODUCT MODAL
+====================== */
+
+window.openModal = function(index) {
+  const p = products[index];
+
+  document.getElementById("modalImage").src = p.image;
+  document.getElementById("modalTitle").innerText = p.name;
+  document.getElementById("modalPrice").innerHTML = `${p.price} <span class="old-price">${p.oldPrice}</span>`;
+
+  document.getElementById("modalDesc").innerHTML = `
+    <b>Product Description:</b><br>
+    ${p.description}
+  `;
+
+  document.getElementById("modalDetails").innerHTML = `
+    <b>Product Details:</b><br><br>
+    🪨 <b>M
