@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shribalajistone.github.io/BalajiCrafts/sitemap.xml
